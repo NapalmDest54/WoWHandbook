@@ -1,0 +1,699 @@
+﻿<Page
+    x:Class="WoWHandbook.views.CharacterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WoWHandbook.views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Hub
+            x:Name="CharacterHub"
+            >
+            <Hub.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="80" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="backButton"
+                        Margin="-1,-1,0,0"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Stretch"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"
+                        Tapped="backButtonTapped" />
+                    <TextBlock
+                        x:Name="characterTitle"
+                        Text="HubHeader"
+                        Grid.Column="1"
+                        IsHitTestVisible="false"
+                        TextWrapping="NoWrap"
+                        VerticalAlignment="Top" />
+                </Grid>
+            </Hub.Header>
+            <HubSection
+                x:Name="characterItemsSection"
+                VerticalContentAlignment="Stretch"
+                HorizontalContentAlignment="Stretch">
+
+                <DataTemplate>
+                    <Border
+                        BorderBrush="Black"
+                        CornerRadius="3"
+                        BorderThickness="10">
+                        <Grid
+                            MinWidth="720"
+                            MinHeight="550"
+                            Loaded="CharacterImageLoaded">
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <Grid.Background>
+                                <ImageBrush
+                                    Stretch="UniformToFill"
+                                    ImageSource="ms-appx:///Assets/89411467-profilemain.jpg" />
+                            </Grid.Background>
+
+
+                            <Image
+                                x:Name="imageHelm"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageNeck"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageShoulder"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="2"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageBack"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="3"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageChest"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="4"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageShirt"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="5"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageTabard"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="6"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageWrist"
+                                HorizontalAlignment="Left"
+                                Grid.Column="0"
+                                Grid.Row="7"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+
+                            <Image
+                                x:Name="imageMainHand"
+                                HorizontalAlignment="right"
+                                Grid.Column="1"
+                                Grid.Row="7"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageOffHand"
+                                HorizontalAlignment="left"
+                                Grid.Column="2"
+                                Grid.Row="7"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+
+
+
+
+                            <Image
+                                x:Name="imageGloves"
+                                HorizontalAlignment="right"
+                                Grid.Column="3"
+                                Grid.Row="0"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageWaist"
+                                HorizontalAlignment="right"
+                                Grid.Column="3"
+                                Grid.Row="1"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageLegs"
+                                HorizontalAlignment="right"
+                                Grid.Column="3"
+                                Grid.Row="2"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageFeet"
+                                HorizontalAlignment="right"
+                                Grid.Column="3"
+                                Grid.Row="3"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageFinger1"
+                                HorizontalAlignment="Right"
+                                Grid.Column="3"
+                                Grid.Row="4"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageFinger2"
+                                HorizontalAlignment="Right"
+                                Grid.Column="3"
+                                Grid.Row="5"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageTrinket1"
+                                HorizontalAlignment="right"
+                                Grid.Column="3"
+                                Grid.Row="6"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+                            <Image
+                                x:Name="imageTrinket2"
+                                HorizontalAlignment="Right"
+                                Grid.Column="3"
+                                Grid.Row="7"
+                                Loaded="itemSetLoaded"
+                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                Height="50">
+
+                            </Image>
+
+
+                        </Grid>
+                    </Border>
+
+                </DataTemplate>
+            </HubSection>
+
+
+            <HubSection
+                x:Name="statsHubSection"
+                Header="Stats">
+
+                <DataTemplate>
+                    <ScrollViewer
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Padding="0,0,25,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                                BorderThickness="3"
+                                Background="#FF1d1d1d"
+                                BorderBrush="Black"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Margin="5">
+                                <StackPanel>
+                                    <Border
+                                        Background="Black">
+                                        <TextBlock
+                                            x:Name="statsTextBlock"
+                                            TextWrapping="Wrap"
+                                            Text="Base"
+                                            FontSize="22"
+                                            VerticalAlignment="Top"
+                                            Foreground="White"
+                                            Margin="0"
+                                            Padding="0,0,0,0" />
+                                    </Border>
+                                    <TextBlock
+                                        x:Name="baseStats"
+                                        HorizontalAlignment="Left"
+                                        Loaded="baseStatsLoaded"
+                                        TextWrapping="Wrap"
+                                        Text="Stat: 23422"
+                                        FontSize="18"
+                                        VerticalAlignment="Top" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                BorderThickness="3"
+                                Background="#ff1d1d1d"
+                                BorderBrush="Black"
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Margin="5">
+                                <StackPanel>
+                                    <Border
+                                        Background="Black">
+                                        <TextBlock
+                                            x:Name="statsDefense"
+                                            TextWrapping="Wrap"
+                                            Text="Defense"
+                                            FontSize="22"
+                                            VerticalAlignment="Top"
+                                            Foreground="White"
+                                            Margin="0"
+                                            Padding="0,0,0,0" />
+                                    </Border>
+
+                                    <TextBlock
+                                        x:Name="defenseStats"
+                                        HorizontalAlignment="Left"
+                                        Loaded="baseStatsLoaded"
+                                        TextWrapping="Wrap"
+                                        Text="Stat: 23422"
+                                        FontSize="18"
+                                        VerticalAlignment="Top" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                BorderThickness="3"
+                                Background="#FF1D1D1D"
+                                BorderBrush="Black"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="5">
+                                <StackPanel>
+                                    <Border
+                                        Background="Black">
+                                        <TextBlock
+                                            x:Name="statsSpell"
+                                            TextWrapping="Wrap"
+                                            Text="Spell"
+                                            FontSize="22"
+                                            VerticalAlignment="Top"
+                                            Foreground="White"
+                                            Margin="0"
+                                            Padding="0,0,0,0" />
+                                    </Border>
+
+                                    <TextBlock
+                                        x:Name="spellStats"
+                                        HorizontalAlignment="Left"
+                                        Loaded="baseStatsLoaded"
+                                        TextWrapping="Wrap"
+                                        Text="Stat: 23422"
+                                        FontSize="18"
+                                        VerticalAlignment="Top" />
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                BorderThickness="3"
+                                Background="#FF1D1D1D"
+                                BorderBrush="Black"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Margin="5">
+                                <StackPanel>
+                                    <Border
+                                        Background="Black">
+                                        <TextBlock
+                                            x:Name="statsMelee"
+                                            TextWrapping="Wrap"
+                                            Text="Melee"
+                                            FontSize="22"
+                                            VerticalAlignment="Top"
+                                            Foreground="White"
+                                            Margin="0"
+                                            Padding="0,0,0,0" />
+                                    </Border>
+
+                                    <TextBlock
+                                        x:Name="meleeStats"
+                                        HorizontalAlignment="Left"
+                                        Loaded="baseStatsLoaded"
+                                        TextWrapping="Wrap"
+                                        Text="Stat: 23422"
+                                        FontSize="18"
+                                        VerticalAlignment="Top" />
+
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                BorderThickness="3"
+                                Background="#ff1d1d1d"
+                                BorderBrush="Black"
+                                Grid.Column="0"
+                                Grid.Row="2"
+                                Margin="5">
+                                <StackPanel>
+                                    <Border
+                                        Background="Black">
+                                        <TextBlock
+                                            x:Name="statsRanged"
+                                            TextWrapping="Wrap"
+                                            Text="Ranged"
+                                            FontSize="22"
+                                            VerticalAlignment="Top"
+                                            Foreground="White"
+                                            Margin="0"
+                                            Padding="0,0,0,0" />
+                                    </Border>
+                                    <TextBlock
+                                        x:Name="rangedStats"
+                                        HorizontalAlignment="Left"
+                                        Loaded="baseStatsLoaded"
+                                        TextWrapping="Wrap"
+                                        Text="Stat: 23422"
+                                        FontSize="18"
+                                        VerticalAlignment="Top" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </ScrollViewer>
+
+
+
+                </DataTemplate>
+            </HubSection>
+            <HubSection
+                Header="Glyphs and Talents"
+                Width="740">
+                <DataTemplate>
+                    <ListView
+                        x:Name="talentListView"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Loaded="TalentListViewLoaded"
+                        IsHoldingEnabled="False"
+                        IsRightTapEnabled="False"
+                        IsDoubleTapEnabled="False"
+                        IsTapEnabled="False">
+                        <Button
+                            x:Name="buttonTalent1"
+                            HorizontalAlignment="Left"
+                            Height="60"
+                            VerticalAlignment="Top"
+                            Width="213"
+                            Loaded="TalentButtonLoaded"
+                            IsRightTapEnabled="False"
+                            IsDoubleTapEnabled="False"
+                            IsHoldingEnabled="False"
+                            IsTapEnabled="False">
+                            <Grid>
+                                <Image
+                                    x:Name="talentImage1"
+                                    Source="ms-appx:///Assets/talent_heart_of_the_wild.jpg"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Stretch="Uniform"
+                                    Width="186"
+                                    IsRightTapEnabled="False"
+                                    IsHoldingEnabled="False"
+                                    IsDoubleTapEnabled="False"
+                                    IsTapEnabled="False"
+                                    Loaded="TalentImageLoaded" />
+                                <TextBlock
+                                    x:Name="talentText1"
+                                    Margin="49,0,-14,0"
+                                    Loaded="TalentButtonTextLoaded"
+                                    FontSize="14"></TextBlock>
+                            </Grid>
+                        </Button>
+                        <Button
+                            x:Name="buttonTalent2"
+                            HorizontalAlignment="Left"
+                            Height="60"
+                            VerticalAlignment="Top"
+                            Width="213"
+                            Foreground="White"
+                            BorderBrush="#FFDEDEDE"
+                            Background="{x:Null}"
+                            IsDoubleTapEnabled="False"
+                            IsRightTapEnabled="False">
+                            <Grid>
+                                <Image
+                                    x:Name="talentImage2"
+                                    Source="ms-appx:///Assets/talent_heart_of_the_wild.jpg"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Stretch="Uniform"
+                                    Width="186"
+                                    IsRightTapEnabled="False"
+                                    IsHoldingEnabled="False"
+                                    IsDoubleTapEnabled="False"
+                                    IsTapEnabled="False"
+                                    Loaded="TalentImageLoaded" />
+                                <TextBlock
+                                    x:Name="talentText2"
+                                    Margin="49,0,-14,0"
+                                    Loaded="TalentButtonTextLoaded"
+                                    FontSize="14"></TextBlock>
+                            </Grid>
+                        </Button>
+                        <Button
+                            x:Name="buttonTalent3"
+                            HorizontalAlignment="Left"
+                            Height="60"
+                            VerticalAlignment="Top"
+                            Width="213"
+                            Foreground="White"
+                            BorderBrush="#FFDEDEDE"
+                            Background="{x:Null}"
+                            IsRightTapEnabled="False"
+                            IsDoubleTapEnabled="False">
+                            <Grid>
+                                <Image
+                                    x:Name="talentImage3"
+                                    Source="ms-appx:///Assets/talent_heart_of_the_wild.jpg"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Stretch="Uniform"
+                                    Width="186"
+                                    IsRightTapEnabled="False"
+                                    IsHoldingEnabled="False"
+                                    IsDoubleTapEnabled="False"
+                                    IsTapEnabled="False"
+                                    Loaded="TalentImageLoaded" />
+                                <TextBlock
+                                    x:Name="talentText3"
+                                    Margin="49,0,-14,0"
+                                    Loaded="TalentButtonTextLoaded"
+                                    FontSize="14"></TextBlock>
+                            </Grid>
+                        </Button>
+                        <Button
+                            x:Name="buttonTalent4"
+                            HorizontalAlignment="Left"
+                            Height="60"
+                            VerticalAlignment="Top"
+                            Width="213"
+                            Foreground="White"
+                            BorderBrush="#FFDEDEDE"
+                            Background="{x:Null}"
+                            IsRightTapEnabled="False"
+                            IsDoubleTapEnabled="False">
+                            <Grid>
+                                <Image
+                                    x:Name="talentImage4"
+                                    Source="ms-appx:///Assets/talent_heart_of_the_wild.jpg"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Stretch="Uniform"
+                                    Width="186"
+                                    IsRightTapEnabled="False"
+                                    IsHoldingEnabled="False"
+                                    IsDoubleTapEnabled="False"
+                                    IsTapEnabled="False"
+                                    Loaded="TalentImageLoaded" />
+                                <TextBlock
+                                    x:Name="talentText4"
+                                    Margin="49,0,-14,0"
+                                    Loaded="TalentButtonTextLoaded"
+                                    FontSize="14"></TextBlock>
+                            </Grid>
+                        </Button>
+                        <Button
+                            x:Name="buttonTalent5"
+                            HorizontalAlignment="Left"
+                            Height="60"
+                            VerticalAlignment="Top"
+                            Width="213"
+                            Foreground="White"
+                            BorderBrush="#FFDEDEDE"
+                            Background="{x:Null}"
+                            IsRightTapEnabled="False"
+                            IsDoubleTapEnabled="False">
+                            <Grid>
+                                <Image
+                                    x:Name="talentImage5"
+                                    Source="ms-appx:///Assets/talent_heart_of_the_wild.jpg"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Stretch="Uniform"
+                                    Width="186"
+                                    IsRightTapEnabled="False"
+                                    IsHoldingEnabled="False"
+                                    IsDoubleTapEnabled="False"
+                                    IsTapEnabled="False"
+                                    Loaded="TalentImageLoaded" />
+                                <TextBlock
+                                    x:Name="talentText5"
+                                    Margin="49,0,-14,0"
+                                    Loaded="TalentButtonTextLoaded"
+                                    FontSize="14"></TextBlock>
+                            </Grid>
+                        </Button>
+                        <Button
+                            x:Name="buttonTalent6"
+                            HorizontalAlignment="Left"
+                            Height="60"
+                            VerticalAlignment="Top"
+                            Width="213"
+                            Foreground="White"
+                            BorderBrush="#FFDEDEDE"
+                            Background="{x:Null}"
+                            IsRightTapEnabled="False"
+                            IsDoubleTapEnabled="False">
+                            <Grid>
+                                <Image
+                                    x:Name="talentImage6"
+                                    Source="ms-appx:///Assets/talent_heart_of_the_wild.jpg"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Stretch="Uniform"
+                                    Width="186"
+                                    IsRightTapEnabled="False"
+                                    IsHoldingEnabled="False"
+                                    IsDoubleTapEnabled="False"
+                                    IsTapEnabled="False"
+                                    Loaded="TalentImageLoaded" />
+                                <TextBlock
+                                    x:Name="talentText6"
+                                    Margin="49,0,-14,0"
+                                    Loaded="TalentButtonTextLoaded"
+                                    FontSize="14"></TextBlock>
+                            </Grid>
+                        </Button>
+                    </ListView>
+
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+
+
+
+
+
+
+
+
+    </Grid>
+</Page>
