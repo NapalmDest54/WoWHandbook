@@ -31,7 +31,7 @@ namespace WoWHandbook.backend
 
         public Character getCharacter(String characterName, String server)
         {
-            return client.GetCharacter(server, characterName, true);
+            return client.GetCharacterAsync(server, characterName, CharacterFields.All).Result;
         }
     }
 }
