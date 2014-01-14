@@ -29,26 +29,6 @@ namespace WoWHandbook.backend
         }
 
 
-        public int getLevel(String characterName, String server)
-        {
-            Character character = null;
-            //try
-           // {
-            character = client.GetCharacter(server, characterName, true);
-           // }
-           // catch (Exception e)
-           // {
-               // System.Diagnostics.Debug.WriteLine(e.Message);
-          //  }
-
-            if (character == null)
-                return 0;
-            return character.Level;
-        }
-
-
-
-
         public Character getCharacter(String characterName, String server)
         {
             return client.GetCharacter(server, characterName, true);

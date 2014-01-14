@@ -332,6 +332,7 @@ namespace WoWHandbook.views
         {
             if (item == null)
             {
+                
                 image.Opacity = 0.5;
                 (image.Parent as Border).Opacity = 0.5;
                 return;
@@ -377,6 +378,51 @@ namespace WoWHandbook.views
             switch (image.Name)
             {
                 case "imageHelm":
+                    
+                    itemInfoFrame.Visibility = Visibility.Visible;
+                    var ttv = image.TransformToVisual(Window.Current.Content);
+                    Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+                    //System.Diagnostics.Debug.WriteLine(e.GetCurrentPoint(MainGrid).Position.X);
+                    System.Diagnostics.Debug.WriteLine(screenCoords.X);
+                    Thickness margin = itemInfoFrame.Margin;
+                    margin.Left = screenCoords.X + image.ActualWidth + 20;
+                    margin.Top = screenCoords.Y;
+                    itemInfoFrame.Margin = margin;
+
+                    EquippedItem item = character.Items.Head;
+                    itemInfoName.Text = item.Name;
+                    SolidColorBrush solidColorBrush;
+                    switch (item.Quality)
+                    {
+
+                        case ItemQuality.Common:
+                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.White);
+                            break;
+                        case ItemQuality.Uncommon:
+                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Green);
+                            break;
+                        case ItemQuality.Rare:
+                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
+                            break;
+                        case ItemQuality.Epic:
+                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
+                            break;
+                        case ItemQuality.Legendary:
+                            solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
+                            break;
+                        case ItemQuality.Artifact:
+                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                            break;
+                        case ItemQuality.Heirloom:
+                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                            break;
+                        default:
+                            solidColorBrush = new SolidColorBrush(Windows.UI.Colors.White);
+                            break;
+                    }
+                    itemInfoName.Foreground = solidColorBrush;
+                   
+
                     /*TextBlock textBlock = new TextBlock();
                     textBlock.Text = "TEST";
                     Thickness margin = textBlock.Margin;
@@ -393,7 +439,11 @@ namespace WoWHandbook.views
             }
         }
 
+        private void EquipmentPointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            itemInfoFrame.Visibility = Visibility.Collapsed;
 
+        }
 
 
 
