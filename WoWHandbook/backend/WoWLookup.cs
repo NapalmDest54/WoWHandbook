@@ -15,7 +15,7 @@ namespace WoWHandbook.backend
 
         private WoWLookup()
         {
-            client = new WowClient(Region.EU);
+            client = new WowClient(Region.US);
         }
 
         public static WoWLookup getInstance()
@@ -31,7 +31,7 @@ namespace WoWHandbook.backend
 
         public Character getCharacter(String characterName, String server)
         {
-            return client.GetCharacterAsync("kazzak", "Grendiser", CharacterFields.All).Result;
+            return client.GetCharacterAsync(server, characterName, CharacterFields.All).Result;
         }
     }
 }

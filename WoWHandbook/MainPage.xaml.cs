@@ -35,11 +35,9 @@ namespace WoWHandbook
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //responseTextBlock.Text = WoWLookup.getInstance().getLevel(nameField.Text, "Area52").ToString();
-            String[] args = { nameField.Text, realmField.Text };
-            WowClient client = new WowClient(Region.EU);
-            Character c = client.GetCharacterAsync("kazzak", "Grendiser", CharacterFields.All).Result;
-            System.Diagnostics.Debug.WriteLine("Got character");
-            this.Frame.Navigate(typeof(CharacterPage), c); 
+           // WowClient client = new WowClient(Region.EU);
+            String[] args = { nameField.Text, realmField.Text }; 
+            this.Frame.Navigate(typeof(CharacterPage), args); 
                
         }
         private void NameField_KeyDown(object sender, KeyRoutedEventArgs e)

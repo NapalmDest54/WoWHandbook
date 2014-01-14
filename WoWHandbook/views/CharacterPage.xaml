@@ -107,7 +107,7 @@
                                         MaxHeight="80"
                                         Source="ms-appx:///Assets/empty-slot-head.jpg"
                                         PointerEntered="EquipmentPointerEntered"
-                                        PointerExited="EquipmentPointerExited"/>
+                                        PointerExited="EquipmentPointerExited" />
                                 </Border>
                             </Frame>
                             <Frame
@@ -126,7 +126,9 @@
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-neck.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-neck.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -147,7 +149,9 @@
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-shoulder.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-shoulder.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -168,7 +172,9 @@
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-chest.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-chest.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -189,7 +195,9 @@
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-chest.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-chest.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -211,7 +219,9 @@
                                         Grid.Column="0"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-shirt.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-shirt.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -232,7 +242,9 @@
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-tabard.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-tabard.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -253,7 +265,9 @@
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-wrists.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-wrists.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -274,7 +288,9 @@
                                         HorizontalAlignment="right"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-mainhand.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-mainhand.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -297,7 +313,9 @@
                                         Grid.Row="7"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-secondaryhand.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-secondaryhand.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
 
@@ -322,7 +340,9 @@
                                         Grid.Row="0"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-hands.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-hands.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -345,7 +365,9 @@
                                         Grid.Row="1"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-waist.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-waist.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -365,7 +387,9 @@
                                         x:Name="imageLegs"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-legs.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-legs.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -385,7 +409,9 @@
                                         x:Name="imageFeet"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-feet.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-feet.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -405,7 +431,9 @@
                                         x:Name="imageFinger1"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-finger.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-finger.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -425,7 +453,9 @@
                                         x:Name="imageFinger2"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-finger.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-finger.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -445,7 +475,9 @@
                                         x:Name="imageTrinket1"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-trinket.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-trinket.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -465,7 +497,9 @@
                                         x:Name="imageTrinket2"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/empty-slot-trinket.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-trinket.jpg"
+                                        PointerEntered="EquipmentPointerEntered"
+                                        PointerExited="EquipmentPointerExited">
 
                                     </Image>
                                 </Border>
@@ -894,39 +928,36 @@
             Margin="179,209,0,0"
             VerticalAlignment="Top"
             VerticalContentAlignment="Stretch"
-            Visibility="Visible"
-            >
+            Visibility="Visible">
             <StackPanel
                 Margin="5">
                 <TextBlock
                     Name="itemInfoName"
-                    FontSize="16">
+                    FontSize="20">
                     Name of Item
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoItemLevel"
-                    FontSize="10">
-                    Item Level 
+                    FontSize="12">
+                    Item Level
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoUpgradeLevel"
-                    FontSize="10">
-                    Upgrade Level: x/2
+                    FontSize="12">
+                    Upgrade Level: 
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoBinding"
-                    FontSize="10">
+                    FontSize="12">
                     Binds when picked up
                 </TextBlock>
                 <Grid
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Width="156"
-                    >
+                    Width="156">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition
-                             />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition
@@ -936,21 +967,31 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Name="itemInfoSlot"
-                        FontSize="10"
+                        FontSize="12"
                         Grid.Column="0"
                         Grid.Row="0"
                         HorizontalAlignment="Left">
                         Head
                     </TextBlock>
                     <TextBlock
-                        Name="intemInfoType"
-                        FontSize="10"
+                        Name="itemInfoType"
+                        FontSize="12"
                         Grid.Column="1"
                         Grid.Row="0"
                         HorizontalAlignment="Right">
                          Leather
                     </TextBlock>
                 </Grid>
+                <TextBlock
+                    Name="itemInfoArmor"
+                    FontSize="12">
+                    Armor
+                </TextBlock>
+                <TextBlock
+                    Name="itemInfoStats"
+                    FontSize="12">
+                    Stats
+                </TextBlock>
 
 
             </StackPanel>

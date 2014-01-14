@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using WOWSharp.Community.Wow;
+using WOWSharp.Community;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,23 +32,26 @@ namespace WoWHandbook.views
 
         public CharacterPage()
         {
-            this.InitializeComponent();
-            
+
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-           // String[] args = e.Parameter as String[];
-           // character = WoWLookup.getInstance().getCharacter(args[0], args[1]);
-            character = e.Parameter as Character;
-            characterTitle.Text = character.Name;
-           
+            String[] args = e.Parameter as String[];
+            createCharacter(args[0], args[1]);
+        }
+
+        private async void createCharacter(String characterName, String realm)
+        {
+            var client = new WowClient(Region.US);
+            character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
+            this.InitializeComponent();
         }
 
         private void baseStatsLoaded(object sender, RoutedEventArgs e)
         {
-            return;
             lock (this)
             {
                 TextBlock baseStats = sender as TextBlock;
@@ -122,7 +126,6 @@ namespace WoWHandbook.views
 
         private void TalentListViewLoaded(object sender, RoutedEventArgs e)
         {
-            return;
             ListView talentList = (ListView)sender;
 
             character.Talents.ElementAt(0).ToString();
@@ -130,7 +133,7 @@ namespace WoWHandbook.views
         }
 
 
-              
+
         private void TalentButtonLoaded(object sender, RoutedEventArgs e)
         {
             Button talentButton = sender as Button;
@@ -139,10 +142,6 @@ namespace WoWHandbook.views
 
         private void TalentButtonTextLoaded(object sender, RoutedEventArgs e)
         {
-            if (1==1)
-            {
-                return;
-            }
             TextBlock tb = sender as TextBlock;
             try
             {
@@ -158,7 +157,6 @@ namespace WoWHandbook.views
 
         private void TalentImageLoaded(object sender, RoutedEventArgs e)
         {
-            return;
             Image tb = sender as Image;
             try
             {
@@ -182,7 +180,6 @@ namespace WoWHandbook.views
 
         private void CharacterImageLoaded(object sender, RoutedEventArgs e)
         {
-            return;
             ImageBrush tb = (sender as Grid).Background as ImageBrush;
 
             try
@@ -193,7 +190,7 @@ namespace WoWHandbook.views
                 {
                     System.Diagnostics.Debug.WriteLine("TB is null");
                 }
-                
+
                 tb.ImageSource = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
             }
             catch (Exception exception)
@@ -204,7 +201,7 @@ namespace WoWHandbook.views
 
         private void itemSetLoaded(object sender, RoutedEventArgs e)
         {
-            return;   
+
             Image image = sender as Image;
             try
             {
@@ -273,18 +270,17 @@ namespace WoWHandbook.views
             {
 
             }
-            
-            
+
+
 
             //image
         }
 
         private void equippedItemHelper(Image image, EquippedItem item)
         {
-            return;
             if (item == null)
             {
-                
+
                 image.Opacity = 0.5;
                 (image.Parent as Border).Opacity = 0.5;
                 return;
@@ -294,7 +290,7 @@ namespace WoWHandbook.views
             Border border = image.Parent as Border;
             switch (item.Quality)
             {
-                
+
                 case ItemQuality.Common:
                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.White);
                     break;
@@ -326,70 +322,118 @@ namespace WoWHandbook.views
 
         private void EquipmentPointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            return;
             Image image = sender as Image;
             switch (image.Name)
             {
                 case "imageHelm":
-                    
-                    itemInfoFrame.Visibility = Visibility.Visible;
-                    var ttv = image.TransformToVisual(Window.Current.Content);
-                    Point screenCoords = ttv.TransformPoint(new Point(0, 0));
-                    //System.Diagnostics.Debug.WriteLine(e.GetCurrentPoint(MainGrid).Position.X);
-                    System.Diagnostics.Debug.WriteLine(screenCoords.X);
-                    Thickness margin = itemInfoFrame.Margin;
-                    margin.Left = screenCoords.X + image.ActualWidth + 20;
-                    margin.Top = screenCoords.Y;
-                    itemInfoFrame.Margin = margin;
-
-                    EquippedItem item = character.Items.Head;
-                    itemInfoName.Text = item.Name;
-                    SolidColorBrush solidColorBrush;
-                    switch (item.Quality)
-                    {
-
-                        case ItemQuality.Common:
-                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.White);
-                            break;
-                        case ItemQuality.Uncommon:
-                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Green);
-                            break;
-                        case ItemQuality.Rare:
-                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
-                            break;
-                        case ItemQuality.Epic:
-                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
-                            break;
-                        case ItemQuality.Legendary:
-                            solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
-                            break;
-                        case ItemQuality.Artifact:
-                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
-                            break;
-                        case ItemQuality.Heirloom:
-                           solidColorBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
-                            break;
-                        default:
-                            solidColorBrush = new SolidColorBrush(Windows.UI.Colors.White);
-                            break;
-                    }
-                    itemInfoName.Foreground = solidColorBrush;
-                   
-
-                    /*TextBlock textBlock = new TextBlock();
-                    textBlock.Text = "TEST";
-                    Thickness margin = textBlock.Margin;
-                    margin.Left = 150;
-                    margin.Top = 260;
-                    textBlock.Margin = margin;
-                    textBlock.Visibility = Visibility.Visible;
-                    (FindName("MainGrid") as Grid).Children.Add(textBlock);
-                    */
+                    equipmentPopupHelper(image, character.Items.Head, "Head");
+                    break;
+                case "imageNeck":
+                    equipmentPopupHelper(image, character.Items.Neck, "Neck");
+                    break;
+                case "imageShoulder":
+                    equipmentPopupHelper(image, character.Items.Shoulder, "Shoulder");
+                    break;
+                case "imageBack":
+                    equipmentPopupHelper(image, character.Items.Back, "Back");
+                    break;
+                case "imageChest":
+                    equipmentPopupHelper(image, character.Items.Chest, "Chest");
+                    break;
+                case "imageWrist":
+                    equipmentPopupHelper(image, character.Items.Wrist, "Wrist");
+                    break;
+                case "imageGloves":
+                    equipmentPopupHelper(image, character.Items.Hands, "Hands");
+                    break;
+                case "imageWaist":
+                    equipmentPopupHelper(image, character.Items.Waist, "Waist");
+                    break;
+                case "imageMainHand":
+                    equipmentPopupHelper(image, character.Items.MainHand, "Main Hand");
+                    break;
+                case "imageOffHand":
+                    equipmentPopupHelper(image, character.Items.Offhand, "Off hand");
+                    break;
+                case "imageLegs":
+                    equipmentPopupHelper(image, character.Items.Legs, "Legs");
+                    break;
+                case "imageFinger1":
+                    equipmentPopupHelper(image, character.Items.Finger1, "Finger");
+                    break;
+                case "imageFinger2":
+                    equipmentPopupHelper(image, character.Items.Finger2, "Finger");
+                    break;
+                case "imageTrinket1":
+                    equipmentPopupHelper(image, character.Items.Trinket1, "Trinket");
+                    break;
+                case "imageTrinket2":
+                    equipmentPopupHelper(image, character.Items.Trinket2, "Trinket");
+                    break;
+                case "imageFeet":
+                    equipmentPopupHelper(image, character.Items.Feet, "Feet");
                     break;
 
                 default:
                     break;
             }
+        }
+
+        private void equipmentPopupHelper(Image image, EquippedItem item, String slot)
+        {
+            if (item == null)
+                return;
+            itemInfoFrame.Visibility = Visibility.Visible;
+            var ttv = image.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            Thickness margin = itemInfoFrame.Margin;
+            margin.Left = screenCoords.X + image.ActualWidth + 20;
+            margin.Top = screenCoords.Y;
+            itemInfoFrame.Margin = margin;
+
+
+            itemInfoName.Text = item.Name;
+            SolidColorBrush solidColorBrush;
+            switch (item.Quality)
+            {
+
+                case ItemQuality.Common:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.White);
+                    break;
+                case ItemQuality.Uncommon:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Green);
+                    break;
+                case ItemQuality.Rare:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
+                    break;
+                case ItemQuality.Epic:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
+                    break;
+                case ItemQuality.Legendary:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
+                    break;
+                case ItemQuality.Artifact:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                    break;
+                case ItemQuality.Heirloom:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                    break;
+                default:
+                    solidColorBrush = new SolidColorBrush(Windows.UI.Colors.White);
+                    break;
+            }
+            itemInfoName.Foreground = solidColorBrush;
+            itemInfoItemLevel.Text = "Item Level " + item.ItemLevel;
+            itemInfoUpgradeLevel.Text = "Upgrade Level: " + item.Parameters.Upgrade.Current + "/" + item.Parameters.Upgrade.Total;
+            itemInfoSlot.Text = slot;
+            itemInfoArmor.Text = item.Armor + " Armor";
+            String stats = "";
+            for (int i = 0; i < item.Stats.Count; i++)
+            {
+                ItemStat stat = item.Stats.ElementAt(i);
+                stats += "+" + stat.Amount + " " + stat.StatType + "\n";
+            }
+            itemInfoStats.Text = stats;
         }
 
         private void EquipmentPointerExited(object sender, PointerRoutedEventArgs e)
