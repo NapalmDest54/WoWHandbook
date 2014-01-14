@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid
+    <Grid Name="MainGrid"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Hub
             x:Name="CharacterHub">
@@ -105,7 +105,8 @@
                                         x:Name="imageHelm"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg" />
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                        PointerEntered="EquipmentPointerEntered" />
                                 </Border>
                             </Frame>
                             <Frame
