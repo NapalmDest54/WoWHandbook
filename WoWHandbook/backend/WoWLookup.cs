@@ -34,7 +34,7 @@ namespace WoWHandbook.backend
             Character character = null;
             //try
            // {
-            character = client.GetCharacter("area 52", characterName, true);
+            character = client.GetCharacter(server, characterName, true);
            // }
            // catch (Exception e)
            // {
@@ -51,7 +51,7 @@ namespace WoWHandbook.backend
 
         public Character getCharacter(String characterName, String server)
         {
-            return client.GetCharacter("area 52", characterName, true);
+            return client.GetCharacter(server, characterName, true);
         }
     }
 }

@@ -33,14 +33,21 @@ namespace WoWHandbook
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //responseTextBlock.Text = WoWLookup.getInstance().getLevel(nameField.Text, "Area52").ToString();
-            this.Frame.Navigate(typeof(CharacterPage), nameField.Text); 
+            String[] args = { nameField.Text, realmField.Text };
+            this.Frame.Navigate(typeof(CharacterPage), args); 
                
         }
         private void NameField_KeyDown(object sender, KeyRoutedEventArgs e)
         {
+
+        }
+
+        private void RealmField_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                this.Frame.Navigate(typeof(CharacterPage), nameField.Text); 
+                String[] args = { nameField.Text, realmField.Text };
+                this.Frame.Navigate(typeof(CharacterPage), args);
             }
         }
 
@@ -48,6 +55,8 @@ namespace WoWHandbook
         {
             this.Frame.BackStack.Add(new PageStackEntry(typeof(MainPage), null, null));
         }
+
+
 
     }
 }

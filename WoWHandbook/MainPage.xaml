@@ -13,9 +13,11 @@
                 <CompositeTransform Rotation="0.266"/>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBox x:Name="nameField" HorizontalAlignment="Left" Margin="50,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="632" FontSize="26" KeyDown="NameField_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Height="49" Margin="50,165,0,0" TextWrapping="Wrap" Text="What's your name?" VerticalAlignment="Top" Width="468" FontSize="24"/>
-        <Button x:Name="HelloButton" Content="Say &quot;Hello&quot;" HorizontalAlignment="Left" Height="46" Margin="730,217,0,0" VerticalAlignment="Top" Width="142" FontSize="20" Click="Button_Click"/>
+        <TextBox x:Name="nameField" HorizontalAlignment="Left" Margin="50,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="301" FontSize="26" KeyDown="NameField_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Height="49" Margin="50,165,0,0" TextWrapping="Wrap" Text="Character Name:" VerticalAlignment="Top" Width="301" FontSize="24"/>
+        <Button x:Name="HelloButton" Content="Seach" HorizontalAlignment="Left" Height="46" Margin="603,211,0,0" VerticalAlignment="Top" Width="142" FontSize="20" Click="Button_Click"/>
         <TextBlock x:Name="responseTextBlock" HorizontalAlignment="Left" Margin="266,450,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Foreground="#FF51FF00"/>
+        <TextBox x:Name="realmField" HorizontalAlignment="Left" Margin="371,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="205" FontSize="26" KeyDown="RealmField_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Height="49" Margin="377,165,0,0" TextWrapping="Wrap" Text="Realm:" VerticalAlignment="Top" Width="199" FontSize="24"/>
     </Grid>
 </Page>

@@ -38,7 +38,8 @@ namespace WoWHandbook.views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            character = WoWLookup.getInstance().getCharacter(e.Parameter as String, "area 52");
+            String[] args = e.Parameter as String[];
+            character = WoWLookup.getInstance().getCharacter(args[0], args[1]);
             characterTitle.Text = character.Name;
            
         }
