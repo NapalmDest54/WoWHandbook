@@ -39,12 +39,11 @@ namespace WoWHandbook
         }
         private void NameField_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-
         }
 
         private void RealmField_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (e.Key == Windows.System.VirtualKey.Enter)
+            if ( e.Key == Windows.System.VirtualKey.Enter )
             {
                 String[] args = { nameField.Text, realmField.Text };
                 this.Frame.Navigate(typeof(CharacterPage), args);
