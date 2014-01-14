@@ -97,7 +97,8 @@
                                 Grid.Row="0"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black"
+                                    Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3"
                                     VerticalAlignment="Center">
@@ -105,7 +106,7 @@
                                         x:Name="imageHelm"
                                         Loaded="itemSetLoaded"
                                         MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
+                                        Source="ms-appx:///Assets/empty-slot-head.jpg"
                                         PointerEntered="EquipmentPointerEntered" />
                                 </Border>
                             </Frame>
@@ -115,14 +116,14 @@
                                 Grid.Row="1"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageNeck"
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-neck.jpg">
 
                                     </Image>
                                 </Border>
@@ -133,14 +134,14 @@
                                 Grid.Row="2"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageShoulder"
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-shoulder.jpg">
 
                                     </Image>
                                 </Border>
@@ -151,14 +152,14 @@
                                 Grid.Row="3"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageBack"
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-chest.jpg">
 
                                     </Image>
                                 </Border>
@@ -169,14 +170,14 @@
                                 Grid.Row="4"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageChest"
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-chest.jpg">
 
                                     </Image>
                                 </Border>
@@ -187,7 +188,7 @@
                                 Grid.Row="5"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
@@ -195,7 +196,7 @@
                                         HorizontalAlignment="Left"
                                         Grid.Column="0"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-shirt.jpg">
 
                                     </Image>
                                 </Border>
@@ -206,14 +207,14 @@
                                 Grid.Row="6"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageTabard"
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-tabard.jpg">
 
                                     </Image>
                                 </Border>
@@ -224,14 +225,14 @@
                                 Grid.Row="7"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageWrist"
                                         HorizontalAlignment="Left"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-wrists.jpg">
 
                                     </Image>
                                 </Border>
@@ -242,14 +243,14 @@
                                 Grid.Row="7"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageMainHand"
                                         HorizontalAlignment="right"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-mainhand.jpg">
 
                                     </Image>
                                 </Border>
@@ -260,7 +261,7 @@
                                 Grid.Row="7"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
@@ -269,7 +270,7 @@
                                         Grid.Column="2"
                                         Grid.Row="7"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-secondaryhand.jpg">
 
                                     </Image>
 
@@ -282,7 +283,7 @@
                                 Grid.Row="0"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
@@ -291,7 +292,7 @@
                                         Grid.Column="3"
                                         Grid.Row="0"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-hands.jpg">
 
                                     </Image>
                                 </Border>
@@ -302,7 +303,7 @@
                                 Grid.Row="1"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
@@ -311,7 +312,7 @@
                                         Grid.Column="3"
                                         Grid.Row="1"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-waist.jpg">
 
                                     </Image>
                                 </Border>
@@ -322,13 +323,13 @@
                                 Grid.Row="2"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageLegs"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-legs.jpg">
 
                                     </Image>
                                 </Border>
@@ -339,13 +340,13 @@
                                 Grid.Row="3"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageFeet"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-feet.jpg">
 
                                     </Image>
                                 </Border>
@@ -356,13 +357,13 @@
                                 Grid.Row="4"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageFinger1"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-finger.jpg">
 
                                     </Image>
                                 </Border>
@@ -373,13 +374,13 @@
                                 Grid.Row="5"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageFinger2"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-finger.jpg">
 
                                     </Image>
                                 </Border>
@@ -390,13 +391,13 @@
                                 Grid.Row="6"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageTrinket1"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-trinket.jpg">
 
                                     </Image>
                                 </Border>
@@ -407,13 +408,13 @@
                                 Grid.Row="7"
                                 Margin="2">
                                 <Border
-                                    BorderBrush="Red"
+                                    BorderBrush="Black" Background="Black"
                                     BorderThickness="4"
                                     CornerRadius="3" VerticalAlignment="Center">
                                     <Image
                                         x:Name="imageTrinket2"
                                         Loaded="itemSetLoaded" MaxHeight="80"
-                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
+                                        Source="ms-appx:///Assets/empty-slot-trinket.jpg">
 
                                     </Image>
                                 </Border>

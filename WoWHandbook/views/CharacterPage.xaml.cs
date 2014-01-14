@@ -330,6 +330,13 @@ namespace WoWHandbook.views
 
         private void equippedItemHelper(Image image, EquippedItem item)
         {
+            if (item == null)
+            {
+                image.Opacity = 0.5;
+                (image.Parent as Border).Opacity = 0.5;
+                return;
+            }
+
             image.Source = new BitmapImage(new Uri(sourceSting + item.Icon + ".jpg", UriKind.Absolute));
             Border border = image.Parent as Border;
             switch (item.Quality)

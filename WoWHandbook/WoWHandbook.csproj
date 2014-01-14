@@ -122,6 +122,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\89411467-profilemain.jpg" />
+    <Content Include="Assets\empty-slot-chest.jpg" />
+    <Content Include="Assets\empty-slot-feet.jpg" />
+    <Content Include="Assets\empty-slot-finger.jpg" />
+    <Content Include="Assets\empty-slot-hands.jpg" />
+    <Content Include="Assets\empty-slot-head.jpg" />
+    <Content Include="Assets\empty-slot-legs.jpg" />
+    <Content Include="Assets\empty-slot-mainhand.jpg" />
+    <Content Include="Assets\empty-slot-neck.jpg" />
+    <Content Include="Assets\empty-slot-secondaryhand.jpg" />
+    <Content Include="Assets\empty-slot-shirt.jpg" />
+    <Content Include="Assets\empty-slot-shoulder.jpg" />
+    <Content Include="Assets\empty-slot-tabard.jpg" />
+    <Content Include="Assets\empty-slot-trinket.jpg" />
+    <Content Include="Assets\empty-slot-waist.jpg" />
+    <Content Include="Assets\empty-slot-wrists.jpg" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\spell_holy_blessingofagility.jpg" />
