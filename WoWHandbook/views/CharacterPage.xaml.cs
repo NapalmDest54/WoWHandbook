@@ -364,6 +364,28 @@ namespace WoWHandbook.views
             this.Frame.GoBack();
         }
 
+        private void EquipmentPointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Image image = sender as Image;
+            switch (image.Name)
+            {
+                case "imageHelm":
+                    /*TextBlock textBlock = new TextBlock();
+                    textBlock.Text = "TEST";
+                    Thickness margin = textBlock.Margin;
+                    margin.Left = 150;
+                    margin.Top = 260;
+                    textBlock.Margin = margin;
+                    textBlock.Visibility = Visibility.Visible;
+                    (FindName("MainGrid") as Grid).Children.Add(textBlock);
+                    */
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
 
 
 
