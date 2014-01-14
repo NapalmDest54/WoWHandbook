@@ -38,14 +38,16 @@ namespace WoWHandbook.views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            String[] args = e.Parameter as String[];
-            character = WoWLookup.getInstance().getCharacter(args[0], args[1]);
+           // String[] args = e.Parameter as String[];
+           // character = WoWLookup.getInstance().getCharacter(args[0], args[1]);
+            character = e.Parameter as Character;
             characterTitle.Text = character.Name;
            
         }
 
         private void baseStatsLoaded(object sender, RoutedEventArgs e)
         {
+            return;
             lock (this)
             {
                 TextBlock baseStats = sender as TextBlock;
@@ -120,6 +122,7 @@ namespace WoWHandbook.views
 
         private void TalentListViewLoaded(object sender, RoutedEventArgs e)
         {
+            return;
             ListView talentList = (ListView)sender;
 
             character.Talents.ElementAt(0).ToString();
@@ -127,65 +130,7 @@ namespace WoWHandbook.views
         }
 
 
-        public Object findByName(String name)
-        {
-            List<Control> list = AllChildren(this.Frame);
-
-            foreach (Control c in list)
-            {
-                if (c.Name == name)
-                {
-                    return c;
-                }
-            }
-
-            return null;
-        }
-
-
-
-        public List<Control> AllChildren(DependencyObject parent)
-        {
-            var _List = new List<Control>();
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                var _Child = VisualTreeHelper.GetChild(parent, i);
-                if (_Child is Control)
-                    _List.Add(_Child as Control);
-                _List.AddRange(AllChildren(_Child));
-            }
-            return _List;
-        }
-
-
-
-
-        private DependencyObject FindChildControl<T>(DependencyObject control, string ctrlName)
-        {
-            int childNumber = VisualTreeHelper.GetChildrenCount(control);
-            for (int i = 0; i < childNumber; i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(control, i);
-                FrameworkElement fe = child as FrameworkElement;
-                // Not a framework element or is null
-                if (fe == null) return null;
-
-                if (child is T && fe.Name == ctrlName)
-                {
-                    // Found the control so return
-                    return child;
-                }
-                else
-                {
-                    // Not found it - search children
-                    DependencyObject nextLevel = FindChildControl<T>(child, ctrlName);
-                    if (nextLevel != null)
-                        return nextLevel;
-                }
-            }
-            return null;
-        }
-
+              
         private void TalentButtonLoaded(object sender, RoutedEventArgs e)
         {
             Button talentButton = sender as Button;
@@ -194,6 +139,10 @@ namespace WoWHandbook.views
 
         private void TalentButtonTextLoaded(object sender, RoutedEventArgs e)
         {
+            if (1==1)
+            {
+                return;
+            }
             TextBlock tb = sender as TextBlock;
             try
             {
@@ -209,6 +158,7 @@ namespace WoWHandbook.views
 
         private void TalentImageLoaded(object sender, RoutedEventArgs e)
         {
+            return;
             Image tb = sender as Image;
             try
             {
@@ -232,6 +182,7 @@ namespace WoWHandbook.views
 
         private void CharacterImageLoaded(object sender, RoutedEventArgs e)
         {
+            return;
             ImageBrush tb = (sender as Grid).Background as ImageBrush;
 
             try
@@ -253,7 +204,7 @@ namespace WoWHandbook.views
 
         private void itemSetLoaded(object sender, RoutedEventArgs e)
         {
-            
+            return;   
             Image image = sender as Image;
             try
             {
@@ -330,6 +281,7 @@ namespace WoWHandbook.views
 
         private void equippedItemHelper(Image image, EquippedItem item)
         {
+            return;
             if (item == null)
             {
                 
@@ -374,6 +326,7 @@ namespace WoWHandbook.views
 
         private void EquipmentPointerEntered(object sender, PointerRoutedEventArgs e)
         {
+            return;
             Image image = sender as Image;
             switch (image.Name)
             {
