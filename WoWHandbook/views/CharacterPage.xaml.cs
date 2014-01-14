@@ -27,10 +27,12 @@ namespace WoWHandbook.views
     public sealed partial class CharacterPage : Page
     {
         private Character character = null;
+        private String sourceSting = "http://media.blizzard.com/wow/icons/56/";
 
         public CharacterPage()
         {
             this.InitializeComponent();
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -38,6 +40,7 @@ namespace WoWHandbook.views
             base.OnNavigatedTo(e);
             character = WoWLookup.getInstance().getCharacter(e.Parameter as String, "area 52");
             characterTitle.Text = character.Name;
+           
         }
 
         private void baseStatsLoaded(object sender, RoutedEventArgs e)
@@ -329,6 +332,7 @@ namespace WoWHandbook.views
                 {
                     System.Diagnostics.Debug.WriteLine("TB is null");
                 }
+                
                 tb.ImageSource = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
             }
             catch (Exception exception)
@@ -339,75 +343,65 @@ namespace WoWHandbook.views
 
         private void itemSetLoaded(object sender, RoutedEventArgs e)
         {
-            String sourceSting = "http://media.blizzard.com/wow/icons/56/";
+            
             Image image = sender as Image;
             try
             {
                 switch (image.Name)
                 {
                     case "imageHelm":
-                        sourceSting += character.Items.Head.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Head);
                         break;
                     case "imageNeck":
-                        sourceSting += character.Items.Neck.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Neck);
                         break;
                     case "imageShoulder":
-                        sourceSting += character.Items.Shoulder.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Shoulder);
                         break;
                     case "imageBack":
-                        sourceSting += character.Items.Back.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Back);
                         break;
                     case "imageChest":
-                        sourceSting += character.Items.Chest.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Chest);
                         break;
                     case "imageShirt":
-                        sourceSting += character.Items.Shirt.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Shirt);
                         break;
                     case "imageTabard":
-                        sourceSting += character.Items.Tabard.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Tabard);
                         break;
                     case "imageWrist":
-                        sourceSting += character.Items.Wrist.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Wrist);
                         break;
                     case "imageGloves":
-                        sourceSting += character.Items.Hands.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Hands);
                         break;
                     case "imageWaist":
-                        sourceSting += character.Items.Waist.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Waist);
                         break;
                     case "imageLegs":
-                        sourceSting += character.Items.Legs.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Legs);
                         break;
                     case "imageFeet":
-                        sourceSting += character.Items.Feet.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Feet);
                         break;
                     case "imageFinger1":
-                        sourceSting += character.Items.Finger1.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Finger1);
                         break;
                     case "imageFinger2":
-                        sourceSting += character.Items.Finger2.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Finger2);
                         break;
                     case "imageTrinket1":
-                        sourceSting += character.Items.Trinket1.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Trinket1);
                         break;
                     case "imageTrinket2":
-                        sourceSting += character.Items.Trinket2.Icon + ".jpg";
-                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        equippedItemHelper(image, character.Items.Trinket2);
+                        break;
+                    case "imageMainHand":
+                        equippedItemHelper(image, character.Items.MainHand);
+                        break;
+                    case "imageOffHand":
+                        equippedItemHelper(image, character.Items.Offhand);
                         break;
                     default:
                         break;
@@ -424,10 +418,25 @@ namespace WoWHandbook.views
             //image
         }
 
+        private void equippedItemHelper(Image image, EquippedItem item)
+        {
+            image.Source = new BitmapImage(new Uri(sourceSting + item.Icon + ".jpg", UriKind.Absolute));
+            if (item.Quality == ItemQuality.Epic)
+            {
+                (image.Parent as Border).BorderBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
+            }
+            else if (item.Quality == ItemQuality.Rare)
+            {
+
+            }
+        }
+
         private void backButtonTapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.GoBack();
         }
+
+
 
 
 

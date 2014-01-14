@@ -10,8 +10,7 @@
     <Grid
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Hub
-            x:Name="CharacterHub"
-            >
+            x:Name="CharacterHub">
             <Hub.Header>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -47,11 +46,13 @@
                     <Border
                         BorderBrush="Black"
                         CornerRadius="3"
-                        BorderThickness="10">
+                        BorderThickness="10"
+                        >
                         <Grid
                             MinWidth="720"
                             MinHeight="550"
-                            Loaded="CharacterImageLoaded">
+                            Loaded="CharacterImageLoaded"
+                            >
                             <Grid.RowDefinitions>
                                 <RowDefinition
                                     Height="*" />
@@ -69,6 +70,8 @@
                                     Height="*" />
                                 <RowDefinition
                                     Height="*" />
+                                <RowDefinition
+                                    Height="20" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition
@@ -88,193 +91,332 @@
                                     Stretch="UniformToFill"
                                     ImageSource="ms-appx:///Assets/89411467-profilemain.jpg" />
                             </Grid.Background>
-
-
-                            <Image
-                                x:Name="imageHelm"
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="0"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
-
-                            </Image>
-                            <Image
-                                x:Name="imageNeck"
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3"
+                                    VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageHelm"
+                                        Loaded="itemSetLoaded"
+                                        MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg" />
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="1"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageNeck"
+                                        HorizontalAlignment="Left"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageShoulder"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="2"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageShoulder"
+                                        HorizontalAlignment="Left"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageBack"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="3"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageBack"
+                                        HorizontalAlignment="Left"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageChest"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="4"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageChest"
+                                        HorizontalAlignment="Left"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageShirt"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="5"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageShirt"
+                                        HorizontalAlignment="Left"
+                                        Grid.Column="0"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageTabard"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="6"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageTabard"
+                                        HorizontalAlignment="Left"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageWrist"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Left"
                                 Grid.Column="0"
                                 Grid.Row="7"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageWrist"
+                                        HorizontalAlignment="Left"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-
-                            <Image
-                                x:Name="imageMainHand"
-                                HorizontalAlignment="right"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
+                                HorizontalAlignment="Right"
                                 Grid.Column="1"
                                 Grid.Row="7"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageMainHand"
+                                        HorizontalAlignment="right"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageOffHand"
-                                HorizontalAlignment="left"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
+                                HorizontalAlignment="Left"
                                 Grid.Column="2"
                                 Grid.Row="7"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageOffHand"
+                                        HorizontalAlignment="left"
+                                        Grid.Column="2"
+                                        Grid.Row="7"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
+                                    </Image>
 
+                                </Border>
+                            </Frame>
 
-
-
-                            <Image
-                                x:Name="imageGloves"
-                                HorizontalAlignment="right"
+                            <Frame
+                                HorizontalAlignment="Right"
                                 Grid.Column="3"
                                 Grid.Row="0"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageGloves"
+                                        HorizontalAlignment="right"
+                                        Grid.Column="3"
+                                        Grid.Row="0"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageWaist"
-                                HorizontalAlignment="right"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
+                                HorizontalAlignment="Right"
                                 Grid.Column="3"
                                 Grid.Row="1"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageWaist"
+                                        HorizontalAlignment="right"
+                                        Grid.Column="3"
+                                        Grid.Row="1"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageLegs"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="right"
                                 Grid.Column="3"
                                 Grid.Row="2"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageLegs"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageFeet"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="right"
                                 Grid.Column="3"
                                 Grid.Row="3"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageFeet"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageFinger1"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Right"
                                 Grid.Column="3"
                                 Grid.Row="4"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageFinger1"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageFinger2"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Right"
                                 Grid.Column="3"
                                 Grid.Row="5"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageFinger2"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageTrinket1"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="right"
                                 Grid.Column="3"
                                 Grid.Row="6"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageTrinket1"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
-                            <Image
-                                x:Name="imageTrinket2"
+                                    </Image>
+                                </Border>
+                            </Frame>
+                            <Frame
                                 HorizontalAlignment="Right"
                                 Grid.Column="3"
                                 Grid.Row="7"
-                                Loaded="itemSetLoaded"
-                                Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg"
-                                Height="50">
+                                Margin="2">
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="4"
+                                    CornerRadius="3" VerticalAlignment="Center">
+                                    <Image
+                                        x:Name="imageTrinket2"
+                                        Loaded="itemSetLoaded" MaxHeight="80"
+                                        Source="ms-appx:///Assets/spell_holy_blessingofagility.jpg">
 
-                            </Image>
+                                    </Image>
+                                </Border>
+                            </Frame>
 
 
                         </Grid>
@@ -687,6 +829,7 @@
                 </DataTemplate>
             </HubSection>
         </Hub>
+
 
 
 
