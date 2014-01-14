@@ -421,13 +421,31 @@ namespace WoWHandbook.views
         private void equippedItemHelper(Image image, EquippedItem item)
         {
             image.Source = new BitmapImage(new Uri(sourceSting + item.Icon + ".jpg", UriKind.Absolute));
-            if (item.Quality == ItemQuality.Epic)
+            Border border = image.Parent as Border;
+            switch (item.Quality)
             {
-                (image.Parent as Border).BorderBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
-            }
-            else if (item.Quality == ItemQuality.Rare)
-            {
-
+                
+                case ItemQuality.Common:
+                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.White);
+                    break;
+                case ItemQuality.Uncommon:
+                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Green);
+                    break;
+                case ItemQuality.Rare:
+                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
+                    break;
+                case ItemQuality.Epic:
+                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
+                    break;
+                case ItemQuality.Legendary:
+                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
+                    break;
+                case ItemQuality.Artifact:
+                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                    break;
+                case ItemQuality.Heirloom:
+                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                    break;
             }
         }
 
