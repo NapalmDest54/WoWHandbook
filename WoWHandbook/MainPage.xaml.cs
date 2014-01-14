@@ -40,7 +40,7 @@ namespace WoWHandbook
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                //this.Frame.Navigate(typeof(CharacterPage), nameField.Text); 
+                this.Frame.Navigate(typeof(CharacterPage), nameField.Text); 
             }
         }
 
