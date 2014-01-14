@@ -341,74 +341,81 @@ namespace WoWHandbook.views
         {
             String sourceSting = "http://media.blizzard.com/wow/icons/56/";
             Image image = sender as Image;
-            switch (image.Name)
+            try
             {
-                case "imageHelm":
-                    sourceSting += character.Items.Head.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageNeck":
-                    sourceSting += character.Items.Neck.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageShoulder":
-                    sourceSting += character.Items.Shoulder.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageBack":
-                    sourceSting += character.Items.Back.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageChest":
-                    sourceSting += character.Items.Chest.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageShirt":
-                    //sourceSting += character.Items.Shirt.Icon + ".jpg";
-                    //image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageTabard":
-                    //sourceSting += character.Items.Tabard.Icon + ".jpg";
-                    //image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageWrist":
-                    sourceSting += character.Items.Wrist.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageGloves":
-                    sourceSting += character.Items.Hands.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageWaist":
-                    sourceSting += character.Items.Waist.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageLegs":
-                    sourceSting += character.Items.Legs.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageFeet":
-                    sourceSting += character.Items.Feet.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageFinger1":
-                    sourceSting += character.Items.Finger1.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageFinger2":
-                    sourceSting += character.Items.Finger2.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageTrinket1":
-                    sourceSting += character.Items.Trinket1.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                case "imageTrinket2":
-                    sourceSting += character.Items.Trinket2.Icon + ".jpg";
-                    image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
-                    break;
-                default:
-                    break;
+                switch (image.Name)
+                {
+                    case "imageHelm":
+                        sourceSting += character.Items.Head.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageNeck":
+                        sourceSting += character.Items.Neck.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageShoulder":
+                        sourceSting += character.Items.Shoulder.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageBack":
+                        sourceSting += character.Items.Back.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageChest":
+                        sourceSting += character.Items.Chest.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageShirt":
+                        sourceSting += character.Items.Shirt.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageTabard":
+                        sourceSting += character.Items.Tabard.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageWrist":
+                        sourceSting += character.Items.Wrist.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageGloves":
+                        sourceSting += character.Items.Hands.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageWaist":
+                        sourceSting += character.Items.Waist.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageLegs":
+                        sourceSting += character.Items.Legs.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageFeet":
+                        sourceSting += character.Items.Feet.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageFinger1":
+                        sourceSting += character.Items.Finger1.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageFinger2":
+                        sourceSting += character.Items.Finger2.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageTrinket1":
+                        sourceSting += character.Items.Trinket1.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    case "imageTrinket2":
+                        sourceSting += character.Items.Trinket2.Icon + ".jpg";
+                        image.Source = new BitmapImage(new Uri(sourceSting, UriKind.Absolute));
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+            catch (NullReferenceException)
+            {
 
             }
             
