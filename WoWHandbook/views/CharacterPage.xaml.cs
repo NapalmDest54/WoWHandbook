@@ -285,8 +285,10 @@ namespace WoWHandbook.views
         private void EquipmentPointerEntered(object sender, PointerRoutedEventArgs e)
         {
             Image image = sender as Image;
-            
-            switch (image.Name)
+            EquippedItem eq;
+            itemDictionary.TryGetValue(image.Name, out eq);
+            equipmentPopupHelper(image, eq, image.Name.Replace("image", ""));
+            /*switch (image.Name)
             {
                 case "imageHelm":
                     equipmentPopupHelper(image, character.Items.Head, "Head");
@@ -339,7 +341,7 @@ namespace WoWHandbook.views
 
                 default:
                     break;
-            }
+            }*/
         }
 
         private void equipmentPopupHelper(Image image, EquippedItem item, String slot)
