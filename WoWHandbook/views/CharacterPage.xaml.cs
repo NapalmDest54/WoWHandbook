@@ -230,66 +230,10 @@ namespace WoWHandbook.views
             Image image = sender as Image;
             try
             {
-                switch (image.Name)
-                {
-                    case "imageHelm":
-                        equippedItemHelper(image, character.Items.Head);
-                        break;
-                    case "imageNeck":
-                        equippedItemHelper(image, character.Items.Neck);
-                        break;
-                    case "imageShoulder":
-                        equippedItemHelper(image, character.Items.Shoulder);
-                        break;
-                    case "imageBack":
-                        equippedItemHelper(image, character.Items.Back);
-                        break;
-                    case "imageChest":
-                        equippedItemHelper(image, character.Items.Chest);
-                        break;
-                    case "imageShirt":
-                        equippedItemHelper(image, character.Items.Shirt);
-                        break;
-                    case "imageTabard":
-                        equippedItemHelper(image, character.Items.Tabard);
-                        break;
-                    case "imageWrist":
-                        equippedItemHelper(image, character.Items.Wrist);
-                        break;
-                    case "imageGloves":
-                        equippedItemHelper(image, character.Items.Hands);
-                        break;
-                    case "imageWaist":
-                        equippedItemHelper(image, character.Items.Waist);
-                        break;
-                    case "imageLegs":
-                        equippedItemHelper(image, character.Items.Legs);
-                        break;
-                    case "imageFeet":
-                        equippedItemHelper(image, character.Items.Feet);
-                        break;
-                    case "imageFinger1":
-                        equippedItemHelper(image, character.Items.Finger1);
-                        break;
-                    case "imageFinger2":
-                        equippedItemHelper(image, character.Items.Finger2);
-                        break;
-                    case "imageTrinket1":
-                        equippedItemHelper(image, character.Items.Trinket1);
-                        break;
-                    case "imageTrinket2":
-                        equippedItemHelper(image, character.Items.Trinket2);
-                        break;
-                    case "imageMainHand":
-                        equippedItemHelper(image, character.Items.MainHand);
-                        break;
-                    case "imageOffHand":
-                        equippedItemHelper(image, character.Items.Offhand);
-                        break;
-                    default:
-                        break;
-
-                }
+               
+                EquippedItem eq = new EquippedItem();
+                itemDictionary.TryGetValue(image.Name, out eq);
+                equippedItemHelper(image, eq);
             }
             catch (NullReferenceException)
             {
