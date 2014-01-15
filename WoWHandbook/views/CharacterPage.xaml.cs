@@ -415,10 +415,10 @@ namespace WoWHandbook.views
             for (int i = 0; i < item.Stats.Count; i++)
             {
                 ItemStat stat = item.Stats.ElementAt(i);
-                stats.Append("+" + stat.Amount + " " + stat.StatType);
+                stats.Append("+" + stat.Amount + " " + stat.StatType.ToString().Replace("Rating", ""));
                 if (reforgedTo != null && stat.StatType == reforgedTo)
                 {
-                    stats.Append(" (Reforged from " + reforgedFrom.Value + ")");
+                    stats.Append(" (Reforged from " + reforgedFrom.Value.ToString().Replace("Rating", "") + ")");
                 }
                 stats.Append("\n");
             }
