@@ -147,9 +147,8 @@ namespace WoWHandbook.views
             {
                 tb.Text = character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentText", "")) - 1].Spell.Name;
                 Spell spell = character.Talents[0].Build[0].Spell;
-                System.Diagnostics.Debug.WriteLine(spell.Name + "\t" + spell.Icon);
             }
-            catch
+            catch (ArgumentOutOfRangeException)
             {
                 tb.Text = "Empty";
             }
@@ -163,16 +162,18 @@ namespace WoWHandbook.views
                 //
                 //tb.Source = new BitmapImage(new Uri("ms-appx:///Assets/" + character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].Spell.Icon + ".jpg"));
                 String sourceString = "http://media.blizzard.com/wow/icons/56/";
-                System.Diagnostics.Debug.WriteLine(sourceString);
-                if (tb == null)
+                try
                 {
-                    System.Diagnostics.Debug.WriteLine("TB is null");
+                    sourceString += character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].Spell.Icon + ".jpg";
+                    tb.Source = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
                 }
-                sourceString += character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].Spell.Icon + ".jpg";
-                tb.Source = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
-                System.Diagnostics.Debug.WriteLine(sourceString);
+                catch (ArgumentOutOfRangeException)
+                {
+
+                }
+                
             }
-            catch (Exception exception)
+            catch (Exception)
             {
 
             }
@@ -424,7 +425,16 @@ namespace WoWHandbook.views
             }
             itemInfoName.Foreground = solidColorBrush;
             itemInfoItemLevel.Text = "Item Level " + item.ItemLevel;
-            itemInfoUpgradeLevel.Text = "Upgrade Level: " + item.Parameters.Upgrade.Current + "/" + item.Parameters.Upgrade.Total;
+            try
+            {
+                itemInfoUpgradeLevel.Text = "Upgrade Level: " + item.Parameters.Upgrade.Current + "/" + item.Parameters.Upgrade.Total;
+                itemInfoUpgradeLevel.Visibility = Visibility.Visible;
+            }
+            catch (NullReferenceException)
+            {
+                itemInfoUpgradeLevel.Visibility = Visibility.Collapsed;
+            }
+            
             itemInfoSlot.Text = slot;
             itemInfoArmor.Text = item.Armor + " Armor";
             String stats = "";
