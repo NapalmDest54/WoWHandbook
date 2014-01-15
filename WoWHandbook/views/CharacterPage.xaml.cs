@@ -31,7 +31,7 @@ namespace WoWHandbook.views
         private Character character = null;
         private String sourceSting = "http://media.blizzard.com/wow/icons/56/";
         private ConcurrentDictionary<String, EquippedItem> itemDictionary;
-        private string[] itemImageNames = { "imageHelm", "imageNeck", "imageShoulder", "imageBack", "imageChest", "imageShirt", "imageTabard", "imageWrist", "imageGloves", "imageWaist", "imageLegs",
+        private string[] itemImageNames = { "imageHead", "imageNeck", "imageShoulder", "imageBack", "imageChest", "imageShirt", "imageTabard", "imageWrist", "imageHands", "imageWaist", "imageLegs",
                                           "imageFeet", "imageFinger1", "imageFinger2", "imageTrinket1", "imageTrinket2", "imageMainHand", "imageOffHand" };
 
         public CharacterPage()
@@ -51,7 +51,7 @@ namespace WoWHandbook.views
         {
             var client = new WowClient(Region.US);
             character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
-            itemDictionary.TryAdd("imageHelm", character.Items.Head);
+            itemDictionary.TryAdd("imageHead", character.Items.Head);
             itemDictionary.TryAdd("imageNeck", character.Items.Neck);
             itemDictionary.TryAdd("imageShoulder", character.Items.Shoulder);
             itemDictionary.TryAdd("imageBack", character.Items.Back);
@@ -59,7 +59,7 @@ namespace WoWHandbook.views
             itemDictionary.TryAdd("imageShirt", character.Items.Shirt);
             itemDictionary.TryAdd("imageTabard", character.Items.Tabard);
             itemDictionary.TryAdd("imageWrist", character.Items.Wrist);
-            itemDictionary.TryAdd("imageGloves", character.Items.Hands);
+            itemDictionary.TryAdd("imageHands", character.Items.Hands);
             itemDictionary.TryAdd("imageWaist", character.Items.Waist);
             itemDictionary.TryAdd("imageLegs", character.Items.Legs);
             itemDictionary.TryAdd("imageFeet", character.Items.Feet);
