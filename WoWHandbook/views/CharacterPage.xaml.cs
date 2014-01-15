@@ -437,13 +437,20 @@ namespace WoWHandbook.views
             
             itemInfoSlot.Text = slot;
             itemInfoArmor.Text = item.Armor + " Armor";
-            String stats = "";
+            StringBuilder stats = new StringBuilder();
+            ItemStatType? reforgedFrom = item.Parameters.ReforgedToStat;
+            ItemStatType? reforgedTo = item.Parameters.ReforgedFromStat;
             for (int i = 0; i < item.Stats.Count; i++)
             {
                 ItemStat stat = item.Stats.ElementAt(i);
-                stats += "+" + stat.Amount + " " + stat.StatType + "\n";
+                stats.Append("+" + stat.Amount + " " + stat.StatType);
+                if (reforgedTo != null && stat.StatType == reforgedTo)
+                {
+                    stats.Append(" (Reforged from " + reforgedFrom.Value + ")");
+                }
+                stats.Append("\n");
             }
-            itemInfoStats.Text = stats;
+            itemInfoStats.Text = stats.ToString();
         }
 
         private void EquipmentPointerExited(object sender, PointerRoutedEventArgs e)
