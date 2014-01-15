@@ -223,8 +223,8 @@ namespace WoWHandbook.views
             Image image = sender as Image;
             try
             {
-               
-                EquippedItem eq = new EquippedItem();
+
+                EquippedItem eq;
                 itemDictionary.TryGetValue(image.Name, out eq);
                 equippedItemHelper(image, eq);
             }
