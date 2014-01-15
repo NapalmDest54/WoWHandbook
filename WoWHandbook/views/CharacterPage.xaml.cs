@@ -30,14 +30,15 @@ namespace WoWHandbook.views
     {
         private Character character = null;
         private String sourceSting = "http://media.blizzard.com/wow/icons/56/";
-        private ConcurrentDictionary<String, EquippedItem> itemDictionary;
+        private ConcurrentDictionary<String, EquippedItem> equippedItemDictionary;
+        private ConcurrentDictionary<EquippedItem, Item> itemDictionary;
         private string[] itemImageNames = { "imageHead", "imageNeck", "imageShoulder", "imageBack", "imageChest", "imageShirt", "imageTabard", "imageWrist", "imageHands", "imageWaist", "imageLegs",
                                           "imageFeet", "imageFinger1", "imageFinger2", "imageTrinket1", "imageTrinket2", "imageMainHand", "imageOffHand" };
-
+        private WowClient client;
         public CharacterPage()
         {
-            itemDictionary = new ConcurrentDictionary<string, EquippedItem>();
-
+            equippedItemDictionary = new ConcurrentDictionary<string, EquippedItem>();
+            itemDictionary = new ConcurrentDictionary<EquippedItem, Item>();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -49,29 +50,42 @@ namespace WoWHandbook.views
 
         private async void createCharacter(String characterName, String realm)
         {
-            var client = new WowClient(Region.US);
+            client = new WowClient(Region.US);
             character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
-            itemDictionary.TryAdd("imageHead", character.Items.Head);
-            itemDictionary.TryAdd("imageNeck", character.Items.Neck);
-            itemDictionary.TryAdd("imageShoulder", character.Items.Shoulder);
-            itemDictionary.TryAdd("imageBack", character.Items.Back);
-            itemDictionary.TryAdd("imageChest", character.Items.Chest);
-            itemDictionary.TryAdd("imageShirt", character.Items.Shirt);
-            itemDictionary.TryAdd("imageTabard", character.Items.Tabard);
-            itemDictionary.TryAdd("imageWrist", character.Items.Wrist);
-            itemDictionary.TryAdd("imageHands", character.Items.Hands);
-            itemDictionary.TryAdd("imageWaist", character.Items.Waist);
-            itemDictionary.TryAdd("imageLegs", character.Items.Legs);
-            itemDictionary.TryAdd("imageFeet", character.Items.Feet);
-            itemDictionary.TryAdd("imageFinger1", character.Items.Finger1);
-            itemDictionary.TryAdd("imageFinger2", character.Items.Finger2);
-            itemDictionary.TryAdd("imageTrinket1", character.Items.Trinket1);
-            itemDictionary.TryAdd("imageTrinket2", character.Items.Trinket2);
-            itemDictionary.TryAdd("imageMainHand", character.Items.MainHand);
-            itemDictionary.TryAdd("imageOffHand", character.Items.Offhand);
-
+            
+            equippedItemDictionary.TryAdd("imageHead", character.Items.Head);
+            equippedItemDictionary.TryAdd("imageNeck", character.Items.Neck);
+            equippedItemDictionary.TryAdd("imageShoulder", character.Items.Shoulder);
+            equippedItemDictionary.TryAdd("imageBack", character.Items.Back);
+            equippedItemDictionary.TryAdd("imageChest", character.Items.Chest);
+            equippedItemDictionary.TryAdd("imageShirt", character.Items.Shirt);
+            equippedItemDictionary.TryAdd("imageTabard", character.Items.Tabard);
+            equippedItemDictionary.TryAdd("imageWrist", character.Items.Wrist);
+            equippedItemDictionary.TryAdd("imageHands", character.Items.Hands);
+            equippedItemDictionary.TryAdd("imageWaist", character.Items.Waist);
+            equippedItemDictionary.TryAdd("imageLegs", character.Items.Legs);
+            equippedItemDictionary.TryAdd("imageFeet", character.Items.Feet);
+            equippedItemDictionary.TryAdd("imageFinger1", character.Items.Finger1);
+            equippedItemDictionary.TryAdd("imageFinger2", character.Items.Finger2);
+            equippedItemDictionary.TryAdd("imageTrinket1", character.Items.Trinket1);
+            equippedItemDictionary.TryAdd("imageTrinket2", character.Items.Trinket2);
+            equippedItemDictionary.TryAdd("imageMainHand", character.Items.MainHand);
+            equippedItemDictionary.TryAdd("imageOffHand", character.Items.Offhand);
             this.InitializeComponent();
-            characterTitle.Text = characterName + "  -  " + character.Realm;
+            characterTitle.Text = character.Name + "  -  " + character.Realm;
+
+            foreach (KeyValuePair<String, EquippedItem> entry in equippedItemDictionary)
+            {
+                if (entry.Value == null)
+                {
+                    continue;
+                }
+                Item item = await client.GetItemAsync(entry.Value.ItemId);
+                itemDictionary.TryAdd(entry.Value, item);
+            }
+
+            
+            
         }
 
         private void baseStatsLoaded(object sender, RoutedEventArgs e)
@@ -225,7 +239,7 @@ namespace WoWHandbook.views
             {
 
                 EquippedItem eq;
-                itemDictionary.TryGetValue(image.Name, out eq);
+                equippedItemDictionary.TryGetValue(image.Name, out eq);
                 equippedItemHelper(image, eq);
             }
             catch (NullReferenceException)
@@ -286,7 +300,7 @@ namespace WoWHandbook.views
         {
             Image image = sender as Image;
             EquippedItem eq;
-            itemDictionary.TryGetValue(image.Name, out eq);
+            equippedItemDictionary.TryGetValue(image.Name, out eq);
             equipmentPopupHelper(image, eq, image.Name.Replace("image", ""));
             /*switch (image.Name)
             {
@@ -344,15 +358,18 @@ namespace WoWHandbook.views
             }*/
         }
 
-        private void equipmentPopupHelper(Image image, EquippedItem item, String slot)
+        private void equipmentPopupHelper(Image image, EquippedItem equipedItem, String slot)
         {
-            if (item == null)
+            if (equipedItem == null)
                 return;
+
+            Item detailedItem;
+            itemDictionary.TryGetValue(equipedItem, out detailedItem);
             
 
-            itemInfoName.Text = item.Name;
+            itemInfoName.Text = equipedItem.Name;
             SolidColorBrush solidColorBrush;
-            switch (item.Quality)
+            switch (equipedItem.Quality)
             {
 
                 case ItemQuality.Common:
@@ -381,10 +398,10 @@ namespace WoWHandbook.views
                     break;
             }
             itemInfoName.Foreground = solidColorBrush;
-            itemInfoItemLevel.Text = "Item Level " + item.ItemLevel;
+            itemInfoItemLevel.Text = "Item Level " + equipedItem.ItemLevel;
             try
             {
-                itemInfoUpgradeLevel.Text = "Upgrade Level: " + item.Parameters.Upgrade.Current + "/" + item.Parameters.Upgrade.Total;
+                itemInfoUpgradeLevel.Text = "Upgrade Level: " + equipedItem.Parameters.Upgrade.Current + "/" + equipedItem.Parameters.Upgrade.Total;
                 itemInfoUpgradeLevel.Visibility = Visibility.Visible;
             }
             catch (NullReferenceException)
@@ -392,10 +409,43 @@ namespace WoWHandbook.views
                 itemInfoUpgradeLevel.Visibility = Visibility.Collapsed;
             }
 
-            itemInfoSlot.Text = slot;
-            if (item.Armor > 0)
+            if (detailedItem != null)
             {
-                itemInfoArmor.Text = item.Armor + " Armor";
+                String bindType = null;
+                switch (detailedItem.BindType)
+                {
+                    case ItemBindType.BindOnEquipped:
+                        bindType = "Binds on Equip";
+                        break;
+                    case ItemBindType.BindOnPickup:
+                        bindType = "Binds on Pickup";
+                        break;
+                    case ItemBindType.BindOnUse:
+                        bindType = "Binds on Use";
+                        break;
+                    case ItemBindType.BindToAccount:
+                        bindType = "Binds on Account";
+                        break;
+                    case ItemBindType.Unbound:
+                        bindType = "Unbound";
+                        break;
+                    default:
+                        break;
+                }
+                if (bindType == null)
+                {
+                    itemInfoBinding.Visibility = Visibility.Collapsed; 
+                }
+                else
+                {
+                    itemInfoBinding.Visibility = Visibility.Visible; 
+                    itemInfoBinding.Text = bindType;
+                }
+            }
+            itemInfoSlot.Text = slot;
+            if (equipedItem.Armor > 0)
+            {
+                itemInfoArmor.Text = equipedItem.Armor + " Armor";
                 itemInfoArmor.Visibility = Visibility.Visible;
             }
             else
@@ -403,11 +453,11 @@ namespace WoWHandbook.views
                 itemInfoArmor.Visibility = Visibility.Collapsed;
             }
             StringBuilder stats = new StringBuilder();
-            ItemStatType? reforgedFrom = item.Parameters.ReforgedToStat;
-            ItemStatType? reforgedTo = item.Parameters.ReforgedFromStat;
-            for (int i = 0; i < item.Stats.Count; i++)
+            ItemStatType? reforgedFrom = equipedItem.Parameters.ReforgedToStat;
+            ItemStatType? reforgedTo = equipedItem.Parameters.ReforgedFromStat;
+            for (int i = 0; i < equipedItem.Stats.Count; i++)
             {
-                ItemStat stat = item.Stats.ElementAt(i);
+                ItemStat stat = equipedItem.Stats.ElementAt(i);
                 stats.Append("+" + stat.Amount + " " + stat.StatType.ToString().Replace("Rating", ""));
                 if (reforgedTo != null && stat.StatType == reforgedTo)
                 {
@@ -417,8 +467,8 @@ namespace WoWHandbook.views
             }
             itemInfoStats.Text = stats.ToString();
 
-
             
+
             itemInfoFrame.Visibility = Visibility.Visible;
             //itemInfoFrame.InvalidateMeasure();
             itemInfoFrame.UpdateLayout();

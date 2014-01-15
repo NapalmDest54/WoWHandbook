@@ -994,6 +994,11 @@
                     FontSize="12">
                     Stats
                 </TextBlock>
+                <TextBlock
+                    Name="itemInfoDescription"
+                    FontSize="12">
+                    Description
+                </TextBlock>
 
 
             </StackPanel>
