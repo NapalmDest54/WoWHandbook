@@ -302,60 +302,6 @@ namespace WoWHandbook.views
             EquippedItem eq;
             equippedItemDictionary.TryGetValue(image.Name, out eq);
             equipmentPopupHelper(image, eq, image.Name.Replace("image", ""));
-            /*switch (image.Name)
-            {
-                case "imageHelm":
-                    equipmentPopupHelper(image, character.Items.Head, "Head");
-                    break;
-                case "imageNeck":
-                    equipmentPopupHelper(image, character.Items.Neck, "Neck");
-                    break;
-                case "imageShoulder":
-                    equipmentPopupHelper(image, character.Items.Shoulder, "Shoulder");
-                    break;
-                case "imageBack":
-                    equipmentPopupHelper(image, character.Items.Back, "Back");
-                    break;
-                case "imageChest":
-                    equipmentPopupHelper(image, character.Items.Chest, "Chest");
-                    break;
-                case "imageWrist":
-                    equipmentPopupHelper(image, character.Items.Wrist, "Wrist");
-                    break;
-                case "imageGloves":
-                    equipmentPopupHelper(image, character.Items.Hands, "Hands");
-                    break;
-                case "imageWaist":
-                    equipmentPopupHelper(image, character.Items.Waist, "Waist");
-                    break;
-                case "imageMainHand":
-                    equipmentPopupHelper(image, character.Items.MainHand, "Main Hand");
-                    break;
-                case "imageOffHand":
-                    equipmentPopupHelper(image, character.Items.Offhand, "Off hand");
-                    break;
-                case "imageLegs":
-                    equipmentPopupHelper(image, character.Items.Legs, "Legs");
-                    break;
-                case "imageFinger1":
-                    equipmentPopupHelper(image, character.Items.Finger1, "Finger");
-                    break;
-                case "imageFinger2":
-                    equipmentPopupHelper(image, character.Items.Finger2, "Finger");
-                    break;
-                case "imageTrinket1":
-                    equipmentPopupHelper(image, character.Items.Trinket1, "Trinket");
-                    break;
-                case "imageTrinket2":
-                    equipmentPopupHelper(image, character.Items.Trinket2, "Trinket");
-                    break;
-                case "imageFeet":
-                    equipmentPopupHelper(image, character.Items.Feet, "Feet");
-                    break;
-
-                default:
-                    break;
-            }*/
         }
 
         private void equipmentPopupHelper(Image image, EquippedItem equipedItem, String slot)
