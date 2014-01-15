@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using WOWSharp.Community.Wow;
 using WOWSharp.Community;
+using System.Collections.Concurrent;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,10 +30,13 @@ namespace WoWHandbook.views
     {
         private Character character = null;
         private String sourceSting = "http://media.blizzard.com/wow/icons/56/";
+        private ConcurrentDictionary<String, EquippedItem> itemDictionary;
+        private string[] itemImageNames = { "imageHelm", "imageNeck", "imageShoulder", "imageBack", "imageChest", "imageShirt", "imageTabard", "imageWrist", "imageGloves", "imageWaist", "imageLegs",
+                                          "imageFeet", "imageFinger1", "imageFinger2", "imageTrinket1", "imageTrinket2", "imageMainHand", "imageOffHand" };
 
         public CharacterPage()
         {
-
+            itemDictionary = new ConcurrentDictionary<string, EquippedItem>();
 
         }
 
@@ -47,7 +51,27 @@ namespace WoWHandbook.views
         {
             var client = new WowClient(Region.US);
             character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
+            itemDictionary.TryAdd("imageHelm", character.Items.Head);
+            itemDictionary.TryAdd("imageNeck", character.Items.Neck);
+            itemDictionary.TryAdd("imageShoulder", character.Items.Shoulder);
+            itemDictionary.TryAdd("imageBack", character.Items.Back);
+            itemDictionary.TryAdd("imageChest", character.Items.Chest);
+            itemDictionary.TryAdd("imageShirt", character.Items.Shirt);
+            itemDictionary.TryAdd("imageTabard", character.Items.Tabard);
+            itemDictionary.TryAdd("imageWrist", character.Items.Wrist);
+            itemDictionary.TryAdd("imageGloves", character.Items.Hands);
+            itemDictionary.TryAdd("imageWaist", character.Items.Waist);
+            itemDictionary.TryAdd("imageLegs", character.Items.Legs);
+            itemDictionary.TryAdd("imageFeet", character.Items.Feet);
+            itemDictionary.TryAdd("imageFinger1", character.Items.Finger1);
+            itemDictionary.TryAdd("imageFinger2", character.Items.Finger2);
+            itemDictionary.TryAdd("imageTrinket1", character.Items.Trinket1);
+            itemDictionary.TryAdd("imageTrinket2", character.Items.Trinket2);
+            itemDictionary.TryAdd("imageMainHand", character.Items.MainHand);
+            itemDictionary.TryAdd("imageOffHand", character.Items.Offhand);
+
             this.InitializeComponent();
+            characterTitle.Text = characterName + "  -  " + character.Realm;
         }
 
         private void baseStatsLoaded(object sender, RoutedEventArgs e)
@@ -147,9 +171,8 @@ namespace WoWHandbook.views
             {
                 tb.Text = character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentText", "")) - 1].Spell.Name;
                 Spell spell = character.Talents[0].Build[0].Spell;
-                System.Diagnostics.Debug.WriteLine(spell.Name + "\t" + spell.Icon);
             }
-            catch
+            catch (ArgumentOutOfRangeException)
             {
                 tb.Text = "Empty";
             }
@@ -163,16 +186,18 @@ namespace WoWHandbook.views
                 //
                 //tb.Source = new BitmapImage(new Uri("ms-appx:///Assets/" + character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].Spell.Icon + ".jpg"));
                 String sourceString = "http://media.blizzard.com/wow/icons/56/";
-                System.Diagnostics.Debug.WriteLine(sourceString);
-                if (tb == null)
+                try
                 {
-                    System.Diagnostics.Debug.WriteLine("TB is null");
+                    sourceString += character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].Spell.Icon + ".jpg";
+                    tb.Source = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
                 }
-                sourceString += character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].Spell.Icon + ".jpg";
-                tb.Source = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
-                System.Diagnostics.Debug.WriteLine(sourceString);
+                catch (ArgumentOutOfRangeException)
+                {
+
+                }
+
             }
-            catch (Exception exception)
+            catch (Exception)
             {
 
             }
@@ -193,7 +218,7 @@ namespace WoWHandbook.views
 
                 tb.ImageSource = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 System.Diagnostics.Debug.WriteLine("Expcetion Image Loaded");
             }
@@ -205,66 +230,10 @@ namespace WoWHandbook.views
             Image image = sender as Image;
             try
             {
-                switch (image.Name)
-                {
-                    case "imageHelm":
-                        equippedItemHelper(image, character.Items.Head);
-                        break;
-                    case "imageNeck":
-                        equippedItemHelper(image, character.Items.Neck);
-                        break;
-                    case "imageShoulder":
-                        equippedItemHelper(image, character.Items.Shoulder);
-                        break;
-                    case "imageBack":
-                        equippedItemHelper(image, character.Items.Back);
-                        break;
-                    case "imageChest":
-                        equippedItemHelper(image, character.Items.Chest);
-                        break;
-                    case "imageShirt":
-                        equippedItemHelper(image, character.Items.Shirt);
-                        break;
-                    case "imageTabard":
-                        equippedItemHelper(image, character.Items.Tabard);
-                        break;
-                    case "imageWrist":
-                        equippedItemHelper(image, character.Items.Wrist);
-                        break;
-                    case "imageGloves":
-                        equippedItemHelper(image, character.Items.Hands);
-                        break;
-                    case "imageWaist":
-                        equippedItemHelper(image, character.Items.Waist);
-                        break;
-                    case "imageLegs":
-                        equippedItemHelper(image, character.Items.Legs);
-                        break;
-                    case "imageFeet":
-                        equippedItemHelper(image, character.Items.Feet);
-                        break;
-                    case "imageFinger1":
-                        equippedItemHelper(image, character.Items.Finger1);
-                        break;
-                    case "imageFinger2":
-                        equippedItemHelper(image, character.Items.Finger2);
-                        break;
-                    case "imageTrinket1":
-                        equippedItemHelper(image, character.Items.Trinket1);
-                        break;
-                    case "imageTrinket2":
-                        equippedItemHelper(image, character.Items.Trinket2);
-                        break;
-                    case "imageMainHand":
-                        equippedItemHelper(image, character.Items.MainHand);
-                        break;
-                    case "imageOffHand":
-                        equippedItemHelper(image, character.Items.Offhand);
-                        break;
-                    default:
-                        break;
-
-                }
+               
+                EquippedItem eq = new EquippedItem();
+                itemDictionary.TryGetValue(image.Name, out eq);
+                equippedItemHelper(image, eq);
             }
             catch (NullReferenceException)
             {
@@ -424,16 +393,40 @@ namespace WoWHandbook.views
             }
             itemInfoName.Foreground = solidColorBrush;
             itemInfoItemLevel.Text = "Item Level " + item.ItemLevel;
-            itemInfoUpgradeLevel.Text = "Upgrade Level: " + item.Parameters.Upgrade.Current + "/" + item.Parameters.Upgrade.Total;
+            try
+            {
+                itemInfoUpgradeLevel.Text = "Upgrade Level: " + item.Parameters.Upgrade.Current + "/" + item.Parameters.Upgrade.Total;
+                itemInfoUpgradeLevel.Visibility = Visibility.Visible;
+            }
+            catch (NullReferenceException)
+            {
+                itemInfoUpgradeLevel.Visibility = Visibility.Collapsed;
+            }
+
             itemInfoSlot.Text = slot;
-            itemInfoArmor.Text = item.Armor + " Armor";
-            String stats = "";
+            if (item.Armor > 0)
+            {
+                itemInfoArmor.Text = item.Armor + " Armor";
+                itemInfoArmor.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                itemInfoArmor.Visibility = Visibility.Collapsed;
+            }
+            StringBuilder stats = new StringBuilder();
+            ItemStatType? reforgedFrom = item.Parameters.ReforgedToStat;
+            ItemStatType? reforgedTo = item.Parameters.ReforgedFromStat;
             for (int i = 0; i < item.Stats.Count; i++)
             {
                 ItemStat stat = item.Stats.ElementAt(i);
-                stats += "+" + stat.Amount + " " + stat.StatType + "\n";
+                stats.Append("+" + stat.Amount + " " + stat.StatType);
+                if (reforgedTo != null && stat.StatType == reforgedTo)
+                {
+                    stats.Append(" (Reforged from " + reforgedFrom.Value + ")");
+                }
+                stats.Append("\n");
             }
-            itemInfoStats.Text = stats;
+            itemInfoStats.Text = stats.ToString();
         }
 
         private void EquipmentPointerExited(object sender, PointerRoutedEventArgs e)
