@@ -436,7 +436,15 @@ namespace WoWHandbook.views
             }
             
             itemInfoSlot.Text = slot;
-            itemInfoArmor.Text = item.Armor + " Armor";
+            if (item.Armor > 0)
+            {
+                itemInfoArmor.Text = item.Armor + " Armor";
+                itemInfoArmor.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                itemInfoArmor.Visibility = Visibility.Collapsed;
+            }
             StringBuilder stats = new StringBuilder();
             ItemStatType? reforgedFrom = item.Parameters.ReforgedToStat;
             ItemStatType? reforgedTo = item.Parameters.ReforgedFromStat;
