@@ -348,14 +348,7 @@ namespace WoWHandbook.views
         {
             if (item == null)
                 return;
-            itemInfoFrame.Visibility = Visibility.Visible;
-            var ttv = image.TransformToVisual(Window.Current.Content);
-            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
-            Thickness margin = itemInfoFrame.Margin;
-            margin.Left = screenCoords.X + image.ActualWidth + 20;
-            margin.Top = screenCoords.Y;
-            itemInfoFrame.Margin = margin;
-
+            
 
             itemInfoName.Text = item.Name;
             SolidColorBrush solidColorBrush;
@@ -423,6 +416,38 @@ namespace WoWHandbook.views
                 stats.Append("\n");
             }
             itemInfoStats.Text = stats.ToString();
+
+
+            
+            itemInfoFrame.Visibility = Visibility.Visible;
+            //itemInfoFrame.InvalidateMeasure();
+            itemInfoFrame.UpdateLayout();
+            var ttv = image.TransformToVisual(Window.Current.Content);
+            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+            Thickness margin = itemInfoFrame.Margin;
+            if (screenCoords.Y + itemInfoFrame.RenderSize.Height + 15 >= Window.Current.Bounds.Height)
+            {
+                margin.Top = screenCoords.Y + image.RenderSize.Height - itemInfoFrame.RenderSize.Height;
+                
+            }
+            else
+            {
+                
+                margin.Top = screenCoords.Y;
+            }
+            System.Diagnostics.Debug.WriteLine(itemInfoFrame.ActualWidth + "\t" + itemInfoFrame.RenderSize.Width);
+
+            if (screenCoords.X + itemInfoFrame.ActualWidth >= characterItemsSection.RenderSize.Width)
+            {
+                margin.Left = screenCoords.X - itemInfoFrame.ActualWidth - 20;
+            }
+            else
+            {
+                margin.Left = screenCoords.X + image.ActualWidth + 20;
+            }
+            
+            
+            itemInfoFrame.Margin = margin;
         }
 
         private void EquipmentPointerExited(object sender, PointerRoutedEventArgs e)

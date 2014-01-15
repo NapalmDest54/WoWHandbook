@@ -45,6 +45,7 @@
 
                 <DataTemplate>
                     <Border
+                        Name="BorderCharacterEquipment"
                         BorderBrush="Black"
                         CornerRadius="3"
                         BorderThickness="10">
@@ -927,7 +928,8 @@
             HorizontalAlignment="Left"
             Margin="179,209,0,0"
             VerticalAlignment="Top"
-            VerticalContentAlignment="Stretch"
+            Width="auto"
+            Height="auto"
             Visibility="Visible">
             <StackPanel
                 Margin="5">
