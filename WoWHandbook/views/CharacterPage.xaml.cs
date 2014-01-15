@@ -48,6 +48,7 @@ namespace WoWHandbook.views
             var client = new WowClient(Region.US);
             character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
             this.InitializeComponent();
+            characterTitle.Text = characterName + "  -  " + character.Realm;
         }
 
         private void baseStatsLoaded(object sender, RoutedEventArgs e)
