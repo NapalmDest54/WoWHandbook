@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using WOWSharp.Community.Wow;
 using WOWSharp.Community;
+using System.Collections.Concurrent;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,10 +30,13 @@ namespace WoWHandbook.views
     {
         private Character character = null;
         private String sourceSting = "http://media.blizzard.com/wow/icons/56/";
+        private ConcurrentDictionary<String, EquippedItem> itemDictionary;
+        private string[] itemImageNames = { "imageHelm", "imageNeck", "imageShoulder", "imageBack", "imageChest", "imageShirt", "imageTabard", "imageWrist", "imageGloves", "imageWaist", "imageLegs",
+                                          "imageFeet", "imageFinger1", "imageFinger2", "imageTrinket1", "imageTrinket2", "imageMainHand", "imageOffHand" };
 
         public CharacterPage()
         {
-
+            itemDictionary = new ConcurrentDictionary<string, EquippedItem>();
 
         }
 
@@ -47,6 +51,25 @@ namespace WoWHandbook.views
         {
             var client = new WowClient(Region.US);
             character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
+            itemDictionary.TryAdd("imageHelm", character.Items.Head);
+            itemDictionary.TryAdd("imageNeck", character.Items.Neck);
+            itemDictionary.TryAdd("imageShoulder", character.Items.Shoulder);
+            itemDictionary.TryAdd("imageBack", character.Items.Back);
+            itemDictionary.TryAdd("imageChest", character.Items.Chest);
+            itemDictionary.TryAdd("imageShirt", character.Items.Shirt);
+            itemDictionary.TryAdd("imageTabard", character.Items.Tabard);
+            itemDictionary.TryAdd("imageWrist", character.Items.Wrist);
+            itemDictionary.TryAdd("imageGloves", character.Items.Hands);
+            itemDictionary.TryAdd("imageWaist", character.Items.Waist);
+            itemDictionary.TryAdd("imageLegs", character.Items.Legs);
+            itemDictionary.TryAdd("imageFeet", character.Items.Feet);
+            itemDictionary.TryAdd("imageFinger1", character.Items.Finger1);
+            itemDictionary.TryAdd("imageFinger2", character.Items.Finger2);
+            itemDictionary.TryAdd("imageTrinket1", character.Items.Trinket1);
+            itemDictionary.TryAdd("imageTrinket2", character.Items.Trinket2);
+            itemDictionary.TryAdd("imageMainHand", character.Items.MainHand);
+            itemDictionary.TryAdd("imageOffHand", character.Items.Offhand);
+
             this.InitializeComponent();
             characterTitle.Text = characterName + "  -  " + character.Realm;
         }
@@ -172,7 +195,7 @@ namespace WoWHandbook.views
                 {
 
                 }
-                
+
             }
             catch (Exception)
             {
@@ -195,7 +218,7 @@ namespace WoWHandbook.views
 
                 tb.ImageSource = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 System.Diagnostics.Debug.WriteLine("Expcetion Image Loaded");
             }
@@ -435,7 +458,7 @@ namespace WoWHandbook.views
             {
                 itemInfoUpgradeLevel.Visibility = Visibility.Collapsed;
             }
-            
+
             itemInfoSlot.Text = slot;
             if (item.Armor > 0)
             {
