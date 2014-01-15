@@ -210,17 +210,10 @@ namespace WoWHandbook.views
             try
             {
                 String sourceString = "http://us.battle.net/static-render/us/" + character.Thumbnail.Replace("-avatar.jpg", "") + "-profilemain.jpg";
-                System.Diagnostics.Debug.WriteLine(sourceString);
-                if (tb == null)
-                {
-                    System.Diagnostics.Debug.WriteLine("TB is null");
-                }
-
                 tb.ImageSource = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
             }
             catch (Exception)
             {
-                System.Diagnostics.Debug.WriteLine("Expcetion Image Loaded");
             }
         }
 
@@ -292,6 +285,7 @@ namespace WoWHandbook.views
         private void EquipmentPointerEntered(object sender, PointerRoutedEventArgs e)
         {
             Image image = sender as Image;
+            
             switch (image.Name)
             {
                 case "imageHelm":
