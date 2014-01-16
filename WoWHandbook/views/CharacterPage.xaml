@@ -936,22 +936,23 @@
                 >
                 <TextBlock
                     Name="itemInfoName"
-                    FontSize="20">
+                    FontSize="22"
+                    TextWrapping="Wrap">
                     Name of Item
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoItemLevel"
-                    FontSize="12">
+                    FontSize="14">
                     Item Level
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoUpgradeLevel"
-                    FontSize="12">
+                    FontSize="14">
                     Upgrade Level:
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoBinding"
-                    FontSize="12">
+                    FontSize="14">
                     Binds when picked up
                 </TextBlock>
                 <Grid
@@ -970,7 +971,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock
                         Name="itemInfoSlot"
-                        FontSize="12"
+                        FontSize="14"
                         Grid.Column="0"
                         Grid.Row="0"
                         HorizontalAlignment="Left">
@@ -978,7 +979,7 @@
                     </TextBlock>
                     <TextBlock
                         Name="itemInfoType"
-                        FontSize="12"
+                        FontSize="14"
                         Grid.Column="1"
                         Grid.Row="0"
                         HorizontalAlignment="Right">
@@ -987,24 +988,25 @@
                 </Grid>
                 <TextBlock
                     Name="itemInfoArmor"
-                    FontSize="12">
+                    FontSize="14">
                     Armor
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoStats"
-                    FontSize="12">
+                    FontSize="14">
                     Stats
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoDescription"
-                    FontSize="12"
+                    FontSize="14"
                     TextWrapping="Wrap"
                     Foreground="#FF2EFF00">
                     Description
                 </TextBlock>
                 <RichTextBlock
                     Name="itemInfoSetBonus"
-                    TextWrapping="Wrap">
+                    TextWrapping="Wrap"
+                    Foreground="#FF2EFF00">
                     
                 </RichTextBlock>
 

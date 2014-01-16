@@ -312,7 +312,7 @@ namespace WoWHandbook.views
 
             Item detailedItem;
             itemDictionary.TryGetValue(equipedItem, out detailedItem);
-            
+
 
             itemInfoName.Text = equipedItem.Name;
             SolidColorBrush solidColorBrush;
@@ -381,21 +381,25 @@ namespace WoWHandbook.views
                 }
                 if (bindType == null)
                 {
-                    itemInfoBinding.Visibility = Visibility.Collapsed; 
+                    itemInfoBinding.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    itemInfoBinding.Visibility = Visibility.Visible; 
+                    itemInfoBinding.Visibility = Visibility.Visible;
                     itemInfoBinding.Text = bindType;
                 }
+
                 itemInfoDescription.Text = "";
-                foreach (ItemSpell spell in detailedItem.ItemSpells) {
+                foreach (ItemSpell spell in detailedItem.ItemSpells)
+                {
                     itemInfoDescription.Text += spell.Spell.Description + "\n\n";
                 }
                 if (itemInfoDescription.Text == "")
                 {
                     itemInfoDescription.Visibility = Visibility.Collapsed;
                 }
+
+
                 else
                 {
                     itemInfoDescription.Text.Trim();
@@ -414,8 +418,47 @@ namespace WoWHandbook.views
                 {
                     itemInfoArmor.Visibility = Visibility.Collapsed;
                 }
-            }
-            
+
+
+
+                if (detailedItem.ItemSet != null)
+                {
+                    itemInfoSetBonus.Visibility = Visibility.Visible;
+                    itemInfoSetBonus.Blocks.Clear();
+
+                    
+                    foreach (ItemSetBonus bonus in detailedItem.ItemSet.Bonuses)
+                    {
+                        int itemSetCount = 0;
+                        foreach (KeyValuePair<EquippedItem, Item> entry in itemDictionary)
+                        {
+                            if (entry.Value.ItemSet != null && entry.Value.ItemSet.Id == detailedItem.ItemSet.Id)
+                            {
+                                itemSetCount++;
+                            }
+                        }
+
+                        
+                        Run bonusText = new Run();
+                        if (itemSetCount < bonus.Threshold)
+                        {
+                            bonusText.Foreground = new SolidColorBrush(Windows.UI.Colors.Gray);
+                        }
+                        bonusText.FontSize = 14;
+                        bonusText.Text = "Set (" + bonus.Threshold + "): " +bonus.Description + "\n";
+
+                        // Create a paragraph and add the Run and Bold to it.
+                        Paragraph myParagraph = new Paragraph();
+                        myParagraph.Inlines.Add(bonusText);
+                        itemInfoSetBonus.Blocks.Add(myParagraph);
+                    }
+                }
+                else
+                {
+                    itemInfoSetBonus.Visibility = Visibility.Collapsed;
+                }
+            } // END IF detailedInfo != null
+
             StringBuilder stats = new StringBuilder();
             ItemStatType? reforgedFrom = equipedItem.Parameters.ReforgedToStat;
             ItemStatType? reforgedTo = equipedItem.Parameters.ReforgedFromStat;
@@ -430,20 +473,6 @@ namespace WoWHandbook.views
                 stats.Append("\n");
             }
             itemInfoStats.Text = stats.ToString();
-            if (detailedItem.ItemSet != null)
-            {
-                itemInfoSetBonus.Blocks.Clear();
-                foreach (ItemSetBonus bonus in detailedItem.ItemSet.Bonuses)
-                {
-                    Run bonusText = new Run();
-                    bonusText.Text = bonus.Description;
-
-                    // Create a paragraph and add the Run and Bold to it.
-                    Paragraph myParagraph = new Paragraph();
-                    myParagraph.Inlines.Add(bonusText);
-                    itemInfoSetBonus.Blocks.Add(myParagraph);
-                }
-            }
             itemInfoFrame.Visibility = Visibility.Visible;
             //itemInfoFrame.InvalidateMeasure();
             itemInfoFrame.UpdateLayout();
@@ -453,14 +482,13 @@ namespace WoWHandbook.views
             if (screenCoords.Y + itemInfoFrame.RenderSize.Height + 15 >= Window.Current.Bounds.Height)
             {
                 margin.Top = screenCoords.Y + image.RenderSize.Height - itemInfoFrame.RenderSize.Height;
-                
+
             }
             else
             {
-                
+
                 margin.Top = screenCoords.Y;
             }
-            System.Diagnostics.Debug.WriteLine(itemInfoFrame.ActualWidth + "\t" + itemInfoFrame.RenderSize.Width);
 
             if (screenCoords.X + itemInfoFrame.ActualWidth >= characterItemsSection.RenderSize.Width)
             {
@@ -470,8 +498,8 @@ namespace WoWHandbook.views
             {
                 margin.Left = screenCoords.X + image.ActualWidth + 20;
             }
-            
-            
+
+
             itemInfoFrame.Margin = margin;
         }
 
