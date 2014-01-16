@@ -928,11 +928,12 @@
             HorizontalAlignment="Left"
             Margin="179,209,0,0"
             VerticalAlignment="Top"
-            Width="auto"
-            Height="auto"
+            MaxWidth="350"
+            MinWidth="200"
             Visibility="Visible">
             <StackPanel
-                Margin="5">
+                Margin="5"
+                >
                 <TextBlock
                     Name="itemInfoName"
                     FontSize="20">
@@ -946,7 +947,7 @@
                 <TextBlock
                     Name="itemInfoUpgradeLevel"
                     FontSize="12">
-                    Upgrade Level: 
+                    Upgrade Level:
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoBinding"
@@ -954,9 +955,9 @@
                     Binds when picked up
                 </TextBlock>
                 <Grid
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
-                    Width="156">
+                    >
 
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -996,7 +997,9 @@
                 </TextBlock>
                 <TextBlock
                     Name="itemInfoDescription"
-                    FontSize="12">
+                    FontSize="12"
+                    TextWrapping="Wrap"
+                    Foreground="#FF2EFF00">
                     Description
                 </TextBlock>
 

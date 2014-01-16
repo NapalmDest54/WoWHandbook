@@ -441,6 +441,20 @@ namespace WoWHandbook.views
                     itemInfoBinding.Visibility = Visibility.Visible; 
                     itemInfoBinding.Text = bindType;
                 }
+                itemInfoDescription.Text = "";
+                foreach (ItemSpell spell in detailedItem.ItemSpells) {
+                    itemInfoDescription.Text += spell.Spell.Description + "\n\n";
+                }
+                if (itemInfoDescription.Text == "")
+                {
+                    itemInfoDescription.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    itemInfoDescription.Text.Trim();
+                    itemInfoDescription.Visibility = Visibility.Visible;
+                }
+                //itemInfoDescription.Text = detailedItem.ItemSpells.ElementAt(0).Spell.Description;
             }
             itemInfoSlot.Text = slot;
             if (equipedItem.Armor > 0)
