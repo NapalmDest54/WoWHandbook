@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using WOWSharp.Community.Wow;
 using WOWSharp.Community;
 using System.Collections.Concurrent;
+using Windows.UI.Xaml.Documents;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -52,7 +53,7 @@ namespace WoWHandbook.views
         {
             client = new WowClient(Region.US);
             character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
-            
+
             equippedItemDictionary.TryAdd("imageHead", character.Items.Head);
             equippedItemDictionary.TryAdd("imageNeck", character.Items.Neck);
             equippedItemDictionary.TryAdd("imageShoulder", character.Items.Shoulder);
@@ -84,8 +85,8 @@ namespace WoWHandbook.views
                 itemDictionary.TryAdd(entry.Value, item);
             }
 
-            
-            
+
+
         }
 
         private void baseStatsLoaded(object sender, RoutedEventArgs e)
@@ -401,17 +402,20 @@ namespace WoWHandbook.views
                     itemInfoDescription.Visibility = Visibility.Visible;
                 }
                 //itemInfoDescription.Text = detailedItem.ItemSpells.ElementAt(0).Spell.Description;
+
+
+                itemInfoSlot.Text = slot;
+                if (equipedItem.Armor > 0)
+                {
+                    itemInfoArmor.Text = equipedItem.Armor + " Armor";
+                    itemInfoArmor.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    itemInfoArmor.Visibility = Visibility.Collapsed;
+                }
             }
-            itemInfoSlot.Text = slot;
-            if (equipedItem.Armor > 0)
-            {
-                itemInfoArmor.Text = equipedItem.Armor + " Armor";
-                itemInfoArmor.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                itemInfoArmor.Visibility = Visibility.Collapsed;
-            }
+            
             StringBuilder stats = new StringBuilder();
             ItemStatType? reforgedFrom = equipedItem.Parameters.ReforgedToStat;
             ItemStatType? reforgedTo = equipedItem.Parameters.ReforgedFromStat;
@@ -426,9 +430,20 @@ namespace WoWHandbook.views
                 stats.Append("\n");
             }
             itemInfoStats.Text = stats.ToString();
+            if (detailedItem.ItemSet != null)
+            {
+                itemInfoSetBonus.Blocks.Clear();
+                foreach (ItemSetBonus bonus in detailedItem.ItemSet.Bonuses)
+                {
+                    Run bonusText = new Run();
+                    bonusText.Text = bonus.Description;
 
-            
-
+                    // Create a paragraph and add the Run and Bold to it.
+                    Paragraph myParagraph = new Paragraph();
+                    myParagraph.Inlines.Add(bonusText);
+                    itemInfoSetBonus.Blocks.Add(myParagraph);
+                }
+            }
             itemInfoFrame.Visibility = Visibility.Visible;
             //itemInfoFrame.InvalidateMeasure();
             itemInfoFrame.UpdateLayout();

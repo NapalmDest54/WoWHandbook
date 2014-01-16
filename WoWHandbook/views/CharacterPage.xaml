@@ -1002,6 +1002,11 @@
                     Foreground="#FF2EFF00">
                     Description
                 </TextBlock>
+                <RichTextBlock
+                    Name="itemInfoSetBonus"
+                    TextWrapping="Wrap">
+                    
+                </RichTextBlock>
 
 
             </StackPanel>
