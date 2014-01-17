@@ -398,8 +398,6 @@ namespace WoWHandbook.views
                 {
                     itemInfoDescription.Visibility = Visibility.Collapsed;
                 }
-
-
                 else
                 {
                     itemInfoDescription.Text.Trim();
@@ -426,7 +424,7 @@ namespace WoWHandbook.views
                     itemInfoSetBonus.Visibility = Visibility.Visible;
                     itemInfoSetBonus.Blocks.Clear();
 
-                    
+
                     foreach (ItemSetBonus bonus in detailedItem.ItemSet.Bonuses)
                     {
                         int itemSetCount = 0;
@@ -438,14 +436,14 @@ namespace WoWHandbook.views
                             }
                         }
 
-                        
+
                         Run bonusText = new Run();
                         if (itemSetCount < bonus.Threshold)
                         {
                             bonusText.Foreground = new SolidColorBrush(Windows.UI.Colors.Gray);
                         }
                         bonusText.FontSize = 14;
-                        bonusText.Text = "Set (" + bonus.Threshold + "): " +bonus.Description + "\n";
+                        bonusText.Text = "Set (" + bonus.Threshold + "): " + bonus.Description + "\n";
 
                         // Create a paragraph and add the Run and Bold to it.
                         Paragraph myParagraph = new Paragraph();
@@ -457,7 +455,13 @@ namespace WoWHandbook.views
                 {
                     itemInfoSetBonus.Visibility = Visibility.Collapsed;
                 }
-            } // END IF detailedInfo != null
+            }
+            else
+            {
+                itemInfoSetBonus.Visibility = Visibility.Collapsed;
+                itemInfoBinding.Visibility = Visibility.Collapsed;
+                itemInfoDescription.Visibility = Visibility.Collapsed;
+            }// END IF ELSE detailedInfo != null
 
             StringBuilder stats = new StringBuilder();
             ItemStatType? reforgedFrom = equipedItem.Parameters.ReforgedToStat;
@@ -472,6 +476,9 @@ namespace WoWHandbook.views
                 }
                 stats.Append("\n");
             }
+
+
+
             itemInfoStats.Text = stats.ToString();
             itemInfoFrame.Visibility = Visibility.Visible;
             //itemInfoFrame.InvalidateMeasure();
