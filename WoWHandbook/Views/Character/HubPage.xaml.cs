@@ -186,5 +186,11 @@ namespace WoWHandbook.Views.Character
             else
                 textBlock.Text = "null";
         }
+
+        private void equippedItemsHubSectionLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            HubSection hubSection = sender as HubSection;
+            hubSection.MinWidth = Math.Max(700, Window.Current.Bounds.Width / 2f);
+        }
     }
 }

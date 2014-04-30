@@ -134,6 +134,25 @@
     <PRIResource Include="Strings\en-US\Resources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
+    <Content Include="Assets\89411467-profilemain.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\gear\emptySlots\empty-slot-back.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-chest.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-feet.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-finger.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-hands.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-head.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-legs.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-mainhand.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-neck.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-secondaryhand.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-shirt.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-shoulder.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-tabard.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-trinket.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-waist.jpg" />
+    <Content Include="Assets\gear\emptySlots\empty-slot-wrists.jpg" />
     <Content Include="DataModel\SampleData.json" />
   </ItemGroup>
   <ItemGroup>
