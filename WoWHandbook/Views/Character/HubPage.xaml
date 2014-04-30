@@ -105,439 +105,442 @@
                     <ImageBrush ImageSource="ms-appx:///Assets/89411467-profilemain.jpg" Stretch="UniformToFill" />
                 </HubSection.Background>
             </HubSection>
-            <HubSection x:Name="characterStats" x:Uid="Section1Header" Header="Section 1" HorizontalAlignment="Stretch">
+            <HubSection x:Name="characterStats" x:Uid="Section1Header" Header="Stats" HorizontalAlignment="Stretch">
                 <DataTemplate>
                     <Grid
-                        ScrollViewer.VerticalScrollBarVisibility="Auto">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                    	<Grid x:Name="baseStats" HorizontalAlignment="Left" Height="204" Grid.RowSpan="4" VerticalAlignment="Top" Width="241" Background="#FFFF9700">
-                    		<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
-                    			<TextBlock x:Name="Base_Stats" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Base Stats" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
-                    			<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0"
+                		ScrollViewer.VerticalScrollBarVisibility="Auto" Width="544" VerticalAlignment="Top">
+                    	<Grid.ColumnDefinitions>
+                    		<ColumnDefinition/>
+                    		<ColumnDefinition/>
+                    	</Grid.ColumnDefinitions>
+                		<Grid.RowDefinitions>
+                			<RowDefinition Height="Auto" />
+                			<RowDefinition Height="Auto" />
+                			<RowDefinition Height="Auto" />
+                		</Grid.RowDefinitions>
+                		<Grid x:Name="baseStats" HorizontalAlignment="Center" Height="204" VerticalAlignment="Top" Width="241" Background="#FFFF9700" Margin="0,0,0,30">
+                			<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
+                				<TextBlock x:Name="Base_Stats" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Base Stats" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
+                				<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0"
                                  >
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Strength" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Strength" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="strengthValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="100"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<Grid.ColumnDefinitions>
-                    						<ColumnDefinition Width="209*"/>
-                    						<ColumnDefinition Width="12*"/>
-                    					</Grid.ColumnDefinitions>
-                    					<TextBlock x:Name="Agility" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Agility" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667" Margin="0,2"/>
-                    					<TextBlock x:Name="agilityValue" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="50000" VerticalAlignment="Top" Margin="0,1,0,0" Foreground="Black" HorizontalAlignment="Right" Padding="0,0,5,0" FontSize="18.667" Grid.ColumnSpan="2" Loaded="statLoaded"/>
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Stamina" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Stamina" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="staminaValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="55000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Intellect" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Intellect" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="intellectValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="9000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Spirit" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Spirit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                    					<TextBlock x:Name="spiritValue" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="15500" VerticalAlignment="Top" Margin="0,1,0,0" Foreground="Black" HorizontalAlignment="Right" Padding="0,0,5,0" FontSize="18.667" Loaded="statLoaded"/>
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Mastery" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Mastery" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                    					<TextBlock x:Name="masteryValue" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="30.21%" VerticalAlignment="Top" Margin="0,1,0,0" Foreground="Black" HorizontalAlignment="Right" Padding="0,0,5,0" FontSize="18.667" Loaded="statLoaded"/>
-                    				</Grid>
-                    			</StackPanel>
-                    		</StackPanel>
-                    	</Grid>
-                    	<Grid x:Name="defenseStats" HorizontalAlignment="Left" Height="204" Grid.RowSpan="4" VerticalAlignment="Top" Width="241" Background="#FFFF9700" Margin="299,0,-61,0">
-                    		<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
-                    			<TextBlock x:Name="Base_Stats1" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Defense" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
-                    			<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0">
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Armor" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Armor" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="armorValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="100"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Dodge" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Dodge" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="dodgeValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="50000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Parry" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Parry" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="parryValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="55000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="Block" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Block" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="blockValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="9000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="PvPResil" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="PvP Resilience" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="pvpResilienceValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="15500"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<Grid.ColumnDefinitions>
-                    						<ColumnDefinition Width="31*"/>
-                    						<ColumnDefinition Width="190*"/>
-                    					</Grid.ColumnDefinitions>
-                    					<TextBlock x:Name="PvPPower" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="PvP Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667" Grid.ColumnSpan="2" Margin="0,2"/>
-                                        <TextBlock
-                                            x:Name="pvpPowerValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="30.21%"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Grid.Column="1"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    			</StackPanel>
-                    		</StackPanel>
-                    	</Grid>
-                    	<Grid x:Name="spellStats" HorizontalAlignment="Left" Height="204" Grid.RowSpan="4" VerticalAlignment="Top" Width="241" Background="#FFFF9700" Margin="0,241,0,0">
-                    		<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
-                    			<TextBlock x:Name="Base_Stats2" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Spell" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
-                    			<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0">
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellPower" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Spell Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="spellPowerValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="100"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellHaste" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Haste" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="spellHasteValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="50000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellHit" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Hit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="spellHitValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="+15.00%"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="ManaRegen" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Mana Regen" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="manaRegenValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="9000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="CombatRegen" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Combat Regen" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="manaCombatRegenValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="15500"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellCrit" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Crit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="spellCritValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="30.21%"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    			</StackPanel>
-                    		</StackPanel>
-                    	</Grid>
-                    	<Grid x:Name="meleeStats" HorizontalAlignment="Left" Height="187" Grid.RowSpan="4" VerticalAlignment="Top" Width="244" Background="#FFFF9700" Margin="299,241,0,0">
-                    		<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
-                    			<TextBlock x:Name="Base_Stats3" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Melee" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
-                    			<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="135" HorizontalAlignment="Left" Width="221">
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellPower1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Attack Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="meleeAttackPowerValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="100"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellHaste1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Haste" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="meleeHasteValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="50000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellHit1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Hit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="meleeHitValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="+15.00%"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="ManaRegen1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Crit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="meleeCritValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="9000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="CombatRegen1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Expertise" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="meleeExpertiseValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="0.00%"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    			</StackPanel>
-                    		</StackPanel>
-                    	</Grid>
-                    	<Grid x:Name="rangedStats" HorizontalAlignment="Left" Height="159" Grid.RowSpan="4" VerticalAlignment="Top" Width="244" Background="#FFFF9700" Margin="0,477,0,0">
-                    		<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
-                    			<TextBlock x:Name="Base_Stats4" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Ranged" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
-                    			<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="109" HorizontalAlignment="Left" Width="221">
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellPower2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Attack Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="rangedAttackPowerValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="100"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<Grid.ColumnDefinitions>
-                    						<ColumnDefinition Width="201*"/>
-                    						<ColumnDefinition Width="10*"/>
-                    					</Grid.ColumnDefinitions>
-                    					<TextBlock x:Name="SpellHaste2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Haste" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667" Margin="0,2"/>
-                                        <TextBlock
-                                            x:Name="rangedHasteValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="50000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Grid.ColumnSpan="2"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="SpellHit2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Hit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="rangedHitValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="+15.00%"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    				<Grid Height="26" Margin="0,0,10,0">
-                    					<TextBlock x:Name="ManaRegen2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Crit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                                        <TextBlock
-                                            x:Name="rangedCritValue"
-                                            Style="{StaticResource BaseTextBlockStyle}"
-                                            TextWrapping="Wrap"
-                                            Text="9000"
-                                            VerticalAlignment="Top"
-                                            Margin="0,1,0,0"
-                                            Foreground="Black"
-                                            HorizontalAlignment="Right"
-                                            Padding="0,0,5,0"
-                                            FontSize="18.667"
-                                            Loaded="statLoaded" />
-                    				</Grid>
-                    			</StackPanel>
-                    		</StackPanel>
-                    	</Grid>
-                    </Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Strength" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Strength" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="strengthValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="100"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<Grid.ColumnDefinitions>
+                							<ColumnDefinition Width="209*"/>
+                							<ColumnDefinition Width="12*"/>
+                						</Grid.ColumnDefinitions>
+                						<TextBlock x:Name="Agility" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Agility" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667" Margin="0,2"/>
+                						<TextBlock x:Name="agilityValue" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="50000" VerticalAlignment="Top" Margin="0,1,0,0" Foreground="Black" HorizontalAlignment="Right" Padding="0,0,5,0" FontSize="18.667" Grid.ColumnSpan="2" Loaded="statLoaded"/>
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Stamina" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Stamina" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="staminaValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="55000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Intellect" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Intellect" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="intellectValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="9000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Spirit" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Spirit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock x:Name="spiritValue" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="15500" VerticalAlignment="Top" Margin="0,1,0,0" Foreground="Black" HorizontalAlignment="Right" Padding="0,0,5,0" FontSize="18.667" Loaded="statLoaded"/>
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Mastery" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Mastery" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock x:Name="masteryValue" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="30.21%" VerticalAlignment="Top" Margin="0,1,0,0" Foreground="Black" HorizontalAlignment="Right" Padding="0,0,5,0" FontSize="18.667" Loaded="statLoaded"/>
+                					</Grid>
+                				</StackPanel>
+                			</StackPanel>
+                		</Grid>
+                		<Grid x:Name="defenseStats" HorizontalAlignment="Center" Height="204" VerticalAlignment="Top" Width="241" Background="#FFFF9700" Margin="25,0,0,30" Grid.Column="1">
+                			<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
+                				<TextBlock x:Name="Base_Stats1" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Defense" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
+                				<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0">
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Armor" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Armor" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="armorValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="100"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Dodge" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Dodge" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="dodgeValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="50000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Parry" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Parry" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="parryValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="55000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="Block" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Block" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="blockValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="9000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="PvPResil" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="PvP Resilience" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="pvpResilienceValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="15500"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<Grid.ColumnDefinitions>
+                							<ColumnDefinition Width="31*"/>
+                							<ColumnDefinition Width="190*"/>
+                						</Grid.ColumnDefinitions>
+                						<TextBlock x:Name="PvPPower" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="PvP Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667" Grid.ColumnSpan="2" Margin="0,2"/>
+                						<TextBlock
+                							x:Name="pvpPowerValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="30.21%"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Grid.Column="1"
+                							Loaded="statLoaded" />
+                					</Grid>
+                				</StackPanel>
+                			</StackPanel>
+                		</Grid>
+                		<Grid x:Name="spellStats" HorizontalAlignment="Center" Height="204" VerticalAlignment="Top" Width="241" Background="#FFFF9700" Margin="0,0,0,30" Grid.Row="1">
+                			<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
+                				<TextBlock x:Name="Base_Stats2" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Spell" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
+                				<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0">
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellPower" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Spell Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="spellPowerValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="100"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellHaste" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Haste" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="spellHasteValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="50000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellHit" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Hit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="spellHitValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="+15.00%"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="ManaRegen" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Mana Regen" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="manaRegenValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="9000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="CombatRegen" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Combat Regen" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="manaCombatRegenValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="15500"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellCrit" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Crit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="spellCritValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="30.21%"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                				</StackPanel>
+                			</StackPanel>
+                		</Grid>
+                		<Grid x:Name="meleeStats" HorizontalAlignment="Center" Height="187" VerticalAlignment="Top" Width="244" Background="#FFFF9700" Margin="25,0,0,30" Grid.Row="1" Grid.Column="1">
+                			<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
+                				<TextBlock x:Name="Base_Stats3" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Melee" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
+                				<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="135" HorizontalAlignment="Left" Width="221">
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellPower1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Attack Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="meleeAttackPowerValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="100"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellHaste1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Haste" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="meleeHasteValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="50000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellHit1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Hit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="meleeHitValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="+15.00%"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="ManaRegen1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Crit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="meleeCritValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="9000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="CombatRegen1" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Expertise" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="meleeExpertiseValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="0.00%"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                				</StackPanel>
+                			</StackPanel>
+                		</Grid>
+                		<Grid x:Name="rangedStats" HorizontalAlignment="Center" Height="159" VerticalAlignment="Top" Width="244" Background="#FFFF9700" Margin="0,0,0,30" Grid.Row="2">
+                			<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
+                				<TextBlock x:Name="Base_Stats4" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Ranged" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
+                				<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="109" HorizontalAlignment="Left" Width="221">
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellPower2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Attack Power" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="rangedAttackPowerValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="100"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<Grid.ColumnDefinitions>
+                							<ColumnDefinition Width="201*"/>
+                							<ColumnDefinition Width="10*"/>
+                						</Grid.ColumnDefinitions>
+                						<TextBlock x:Name="SpellHaste2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Haste" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667" Margin="0,2"/>
+                						<TextBlock
+                							x:Name="rangedHasteValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="50000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Grid.ColumnSpan="2"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="SpellHit2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Hit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="rangedHitValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="+15.00%"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                					<Grid Height="26" Margin="0,0,10,0">
+                						<TextBlock x:Name="ManaRegen2" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Crit" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
+                						<TextBlock
+                							x:Name="rangedCritValue"
+                							Style="{StaticResource BaseTextBlockStyle}"
+                							TextWrapping="Wrap"
+                							Text="9000"
+                							VerticalAlignment="Top"
+                							Margin="0,1,0,0"
+                							Foreground="Black"
+                							HorizontalAlignment="Right"
+                							Padding="0,0,5,0"
+                							FontSize="18.667"
+                							Loaded="statLoaded" />
+                					</Grid>
+                				</StackPanel>
+                			</StackPanel>
+                		</Grid>
+                	</Grid>
                 </DataTemplate>
             </HubSection>
             <HubSection Width="520" x:Uid="Section2Header" Header="Section 2">
