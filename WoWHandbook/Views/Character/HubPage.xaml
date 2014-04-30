@@ -76,10 +76,22 @@
                     	<Grid x:Name="baseStats" HorizontalAlignment="Left" Height="204" Grid.RowSpan="4" VerticalAlignment="Top" Width="241" Background="#FFFF9700">
                     		<StackPanel Margin="10,10,0,0" HorizontalAlignment="Left" Width="221" Height="185" VerticalAlignment="Top">
                     			<TextBlock x:Name="Base_Stats" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="Base Stats" Foreground="Black" VerticalAlignment="Center" Height="26" FontWeight="Bold" FontSize="24"/>
-                    			<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0">
+                    			<StackPanel VerticalAlignment="Top" Background="#FFFFD392" Height="179" HorizontalAlignment="Left" Width="231" Margin="0,0,-10,0"
+                                 >
                     				<Grid Height="26" Margin="0,0,10,0">
                     					<TextBlock x:Name="Strength" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Strength" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>
-                    					<TextBlock x:Name="strengthValue" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Margin="0,1,0,0" Foreground="Black" HorizontalAlignment="Right" Padding="0,0,5,0" FontSize="18.667"/>
+                                        <TextBlock
+                                            x:Name="strengthValue"
+                                            Style="{StaticResource BaseTextBlockStyle}"
+                                            TextWrapping="Wrap"
+                                            Text="100"
+                                            VerticalAlignment="Top"
+                                            Margin="0,1,0,0"
+                                            Foreground="Black"
+                                            HorizontalAlignment="Right"
+                                            Padding="0,0,5,0"
+                                            FontSize="18.667"
+                                            Loaded="statLoaded" />
                     				</Grid>
                     				<Grid Height="26" Margin="0,0,10,0">
                     					<TextBlock x:Name="Agility" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" Text="Agility" Foreground="Black" Padding="5,0,0,0" HorizontalAlignment="Left" Height="22" VerticalAlignment="Center" FontSize="18.667"/>

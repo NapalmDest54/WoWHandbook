@@ -35,6 +35,7 @@ namespace WoWHandbook.Views
 
                 Frame rootFrame = Window.Current.Content as Frame;
                 rootFrame.Navigate(typeof(HubPage), new List<String>() { characterNameField.Text, realmField.Text });
+
             }
         }
 

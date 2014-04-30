@@ -116,7 +116,7 @@ namespace WoWHandbook.Views.Character
         {
             wowClient = new WoWClient(new BlizzAPI.Region(BlizzAPI.Region.Regions.US));
             var myList = e.Parameter as List<string>;
-            var task = Task.Run(async () => { this.character = await wowClient.getCharacter(myList.ElementAt(1), myList.ElementAt(0), CharacterFields.Fields.Items); });
+            var task = Task.Run(async () => { this.character = await wowClient.getCharacter(myList.ElementAt(1), myList.ElementAt(0)); });
 
             navigationHelper.OnNavigatedTo(e);
             task.Wait();
@@ -136,6 +136,26 @@ namespace WoWHandbook.Views.Character
         {
             String sourceString = "http://us.battle.net/static-render/us/" + character.Thumbnail.Replace("-avatar.jpg", "") + "-profilemain.jpg";
             (equippedItems.Background as ImageBrush).ImageSource = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
+        }
+
+        private void statLoaded(object sender, RoutedEventArgs e)
+        {
+            if (character == null)
+                return;
+            if (character.Stats == null)
+            {
+                Debug.WriteLine("stats null");
+            }
+            TextBlock stat = sender as TextBlock;
+            switch (stat.Name)
+            {
+                case "strengthValue":
+                    stat.Text = character.Stats.Strength.ToString();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }
