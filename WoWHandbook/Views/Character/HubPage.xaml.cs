@@ -33,6 +33,8 @@ namespace WoWHandbook.Views.Character
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private BlizzAPI.WoW.character.Character character;
         private WoWClient wowClient;
+        private Dictionary<String, String> statDictionary;
+
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -123,6 +125,42 @@ namespace WoWHandbook.Views.Character
             //while (!task.IsCompleted) { Debug.WriteLine(character == null); }
             pageTitle.Text = character.Name + " - " + character.Realm;
 
+
+            statDictionary = new Dictionary<string, string>()
+            {
+                {"strengthValue", character.Stats.Strength.ToString()},
+                {"agilityValue", character.Stats.Agility.ToString()},
+                {"staminaValue", character.Stats.Stamina.ToString()},
+                {"intellectValue", character.Stats.Intellect.ToString()},
+                {"spiritValue", character.Stats.Spirit.ToString()},
+                {"masteryValue", character.Stats.Mastery.ToString("0.00") + "%"},
+
+                {"armorValue", character.Stats.Armor.ToString()},
+                {"dodgeValue", character.Stats.Dodge.ToString("0.00") + "%"},
+                {"parryValue", character.Stats.Parry.ToString("0.00") + "%"},
+                {"blockValue", character.Stats.Block.ToString("0.00") + "%"},
+                {"pvpResilienceValue", character.Stats.PvPResilience.ToString("0.00") + "%"},
+                {"pvpPowerValue", character.Stats.PvPPower.ToString("0.00") + "%"},
+
+                {"spellPowerValue", character.Stats.SpellPower.ToString()},
+                {"spellHasteValue", character.Stats.SpellHaste.ToString("0.00") + "%"},
+                {"spellHitValue", "+" + character.Stats.SpellHitPercent.ToString("0.00") + "%"},
+                {"manaRegenValue", character.Stats.ManaPer5Seconds.ToString()},
+                {"manaCombatRegenValue", character.Stats.ManaCombatPer5Seconds.ToString()},
+                {"spellCritValue", character.Stats.SpellCrit.ToString("0.00") + "%"},
+
+                
+                {"meleeAttackPowerValue", character.Stats.AttackPower.ToString()},
+                {"meleeHasteValue", character.Stats.Haste.ToString("0.00") + "%"},
+                {"meleeHitValue", "+" + character.Stats.HitPercent.ToString("0.00") + "%"},
+                {"meleeCritValue", character.Stats.Crit.ToString("0.00") + "%"},
+                {"meleeExpertiseValue", character.Stats.ExpertiseRating.ToString("0.00") + "%"},
+                
+                {"rangedAttackPowerValue", character.Stats.RangedAttackPower.ToString()},
+                {"rangedHasteValue", character.Stats.RangedHaste.ToString("0.00") + "%"},
+                {"rangedHitValue", "+" + character.Stats.RangedHitPercent.ToString("0.00") + "%"},
+                {"rangedCritValue", character.Stats.RangedCrit.ToString("0.00") + "%"}
+            };
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -140,22 +178,13 @@ namespace WoWHandbook.Views.Character
 
         private void statLoaded(object sender, RoutedEventArgs e)
         {
-            if (character == null)
-                return;
-            if (character.Stats == null)
-            {
-                Debug.WriteLine("stats null");
-            }
-            TextBlock stat = sender as TextBlock;
-            switch (stat.Name)
-            {
-                case "strengthValue":
-                    stat.Text = character.Stats.Strength.ToString();
-                    break;
-
-                default:
-                    break;
-            }
+            TextBlock textBlock = sender as TextBlock;
+            String stat = "";
+            statDictionary.TryGetValue(textBlock.Name, out stat);
+            if (stat != null)
+                textBlock.Text = stat;
+            else
+                textBlock.Text = "null";
         }
     }
 }
