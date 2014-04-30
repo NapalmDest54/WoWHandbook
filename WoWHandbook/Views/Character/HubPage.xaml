@@ -107,8 +107,9 @@
             </HubSection>
             <HubSection x:Name="characterStats" x:Uid="Section1Header" Header="Stats" HorizontalAlignment="Stretch">
                 <DataTemplate>
+                    <ScrollViewer>
                     <Grid
-                		ScrollViewer.VerticalScrollBarVisibility="Auto" Width="544" VerticalAlignment="Top">
+                		Width="544" VerticalAlignment="Top">
                     	<Grid.ColumnDefinitions>
                     		<ColumnDefinition/>
                     		<ColumnDefinition/>
@@ -541,6 +542,7 @@
                 			</StackPanel>
                 		</Grid>
                 	</Grid>
+                    </ScrollViewer>
                 </DataTemplate>
             </HubSection>
             <HubSection Width="520" x:Uid="Section2Header" Header="Section 2">
