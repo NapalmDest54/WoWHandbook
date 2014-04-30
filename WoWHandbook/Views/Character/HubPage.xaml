@@ -107,7 +107,8 @@
             </HubSection>
             <HubSection x:Name="characterStats" x:Uid="Section1Header" Header="Section 1" HorizontalAlignment="Stretch">
                 <DataTemplate>
-                    <Grid Height="1061" Width="595" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Grid
+                        ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
