@@ -15,10 +15,13 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-using WOWSharp.Community.Wow;
-using WOWSharp.Community;
 using System.Collections.Concurrent;
 using Windows.UI.Xaml.Documents;
+using BlizzAPI.WoW.character;
+using BlizzAPI.WoW.character.items;
+using BlizzAPI.WoW.Items;
+using BlizzAPI.WoW;
+using BlizzAPI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,7 +38,7 @@ namespace WoWHandbook.views
         private ConcurrentDictionary<EquippedItem, Item> itemDictionary;
         private string[] itemImageNames = { "imageHead", "imageNeck", "imageShoulder", "imageBack", "imageChest", "imageShirt", "imageTabard", "imageWrist", "imageHands", "imageWaist", "imageLegs",
                                           "imageFeet", "imageFinger1", "imageFinger2", "imageTrinket1", "imageTrinket2", "imageMainHand", "imageOffHand" };
-        private WowClient client;
+        private WoWClient client;
         public CharacterPage()
         {
             equippedItemDictionary = new ConcurrentDictionary<string, EquippedItem>();
@@ -51,27 +54,27 @@ namespace WoWHandbook.views
 
         private async void createCharacter(String characterName, String realm)
         {
-            client = new WowClient(Region.US);
-            character = await client.GetCharacterAsync(realm, characterName, CharacterFields.All);
+            client = new WoWClient(new Region(Region.Regions.US));
+            character = await client.getCharacter(realm, characterName);
 
-            equippedItemDictionary.TryAdd("imageHead", character.Items.Head);
-            equippedItemDictionary.TryAdd("imageNeck", character.Items.Neck);
-            equippedItemDictionary.TryAdd("imageShoulder", character.Items.Shoulder);
-            equippedItemDictionary.TryAdd("imageBack", character.Items.Back);
-            equippedItemDictionary.TryAdd("imageChest", character.Items.Chest);
-            equippedItemDictionary.TryAdd("imageShirt", character.Items.Shirt);
-            equippedItemDictionary.TryAdd("imageTabard", character.Items.Tabard);
-            equippedItemDictionary.TryAdd("imageWrist", character.Items.Wrist);
-            equippedItemDictionary.TryAdd("imageHands", character.Items.Hands);
-            equippedItemDictionary.TryAdd("imageWaist", character.Items.Waist);
-            equippedItemDictionary.TryAdd("imageLegs", character.Items.Legs);
-            equippedItemDictionary.TryAdd("imageFeet", character.Items.Feet);
-            equippedItemDictionary.TryAdd("imageFinger1", character.Items.Finger1);
-            equippedItemDictionary.TryAdd("imageFinger2", character.Items.Finger2);
-            equippedItemDictionary.TryAdd("imageTrinket1", character.Items.Trinket1);
-            equippedItemDictionary.TryAdd("imageTrinket2", character.Items.Trinket2);
-            equippedItemDictionary.TryAdd("imageMainHand", character.Items.MainHand);
-            equippedItemDictionary.TryAdd("imageOffHand", character.Items.Offhand);
+            equippedItemDictionary.TryAdd("imageHead", character.EquippedItems.Head);
+            equippedItemDictionary.TryAdd("imageNeck", character.EquippedItems.Neck);
+            equippedItemDictionary.TryAdd("imageShoulder", character.EquippedItems.Shoulder);
+            equippedItemDictionary.TryAdd("imageBack", character.EquippedItems.Back);
+            equippedItemDictionary.TryAdd("imageChest", character.EquippedItems.Chest);
+            //  equippedItemDictionary.TryAdd("imageShirt", character.EquippedItems.Shirt);
+            //  equippedItemDictionary.TryAdd("imageTabard", character.EquippedItems.Tabard);
+            equippedItemDictionary.TryAdd("imageWrist", character.EquippedItems.Wrist);
+            equippedItemDictionary.TryAdd("imageHands", character.EquippedItems.Hands);
+            equippedItemDictionary.TryAdd("imageWaist", character.EquippedItems.Waist);
+            equippedItemDictionary.TryAdd("imageLegs", character.EquippedItems.Legs);
+            equippedItemDictionary.TryAdd("imageFeet", character.EquippedItems.Feet);
+            equippedItemDictionary.TryAdd("imageFinger1", character.EquippedItems.Finger1);
+            equippedItemDictionary.TryAdd("imageFinger2", character.EquippedItems.Finger2);
+            equippedItemDictionary.TryAdd("imageTrinket1", character.EquippedItems.Trinket1);
+            equippedItemDictionary.TryAdd("imageTrinket2", character.EquippedItems.Trinket2);
+            equippedItemDictionary.TryAdd("imageMainHand", character.EquippedItems.MainHand);
+            equippedItemDictionary.TryAdd("imageOffHand", character.EquippedItems.OffHand);
             this.InitializeComponent();
             characterTitle.Text = character.Name + "  -  " + character.Realm;
 
@@ -81,7 +84,7 @@ namespace WoWHandbook.views
                 {
                     continue;
                 }
-                Item item = await client.GetItemAsync(entry.Value.ItemId);
+                Item item = await client.getItem(entry.Value.ID);
                 itemDictionary.TryAdd(entry.Value, item);
             }
 
@@ -115,20 +118,20 @@ namespace WoWHandbook.views
                         sb.AppendLine();
                         sb.Append("Hit: " + character.Stats.HitRating);
                         sb.AppendLine();
-                        sb.Append("Mana Regen: " + character.Stats.ManaPer5);
+                        sb.Append("Mana Regen: " + character.Stats.ManaPer5Seconds);
                         sb.AppendLine();
-                        sb.Append("Combat Regen: " + character.Stats.ManaPer5Combat);
+                        sb.Append("Combat Regen: " + character.Stats.ManaPer5Seconds);
                         sb.AppendLine();
                         sb.Append("Crit: " + character.Stats.CritRating);
                         break;
                     case "defenseStats":
                         sb.Append("Armor:\t\t" + character.Stats.Armor);
                         sb.AppendLine();
-                        sb.Append("Dodge:\t\t" + character.Stats.DodgeChance);
+                        sb.Append("Dodge:\t\t" + character.Stats.Dodge);
                         sb.AppendLine();
-                        sb.Append("Parry:\t\t" + character.Stats.ParryChance);
+                        sb.Append("Parry:\t\t" + character.Stats.Parry);
                         sb.AppendLine();
-                        sb.Append("Block:\t\t" + character.Stats.BlockChance);
+                        sb.Append("Block:\t\t" + character.Stats.Block);
                         break;
                     case "rangedStats":
                         sb.Append("Atack Power: " + character.Stats.RangedAttackPower);
@@ -140,7 +143,7 @@ namespace WoWHandbook.views
                         sb.Append("Crit: " + character.Stats.CritRating);
                         break;
                     case "meleeStats":
-                        sb.Append("Attack Power:\t" + character.Stats.MeleeAttackPower);
+                        sb.Append("Attack Power:\t" + character.Stats.AttackPower);
                         sb.AppendLine();
                         sb.Append("Haste:\t" + character.Stats.HasteRating);
                         sb.AppendLine();
@@ -184,8 +187,8 @@ namespace WoWHandbook.views
             TextBlock tb = sender as TextBlock;
             try
             {
-                tb.Text = character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentText", "")) - 1].Spell.Name;
-                Spell spell = character.Talents[0].Build[0].Spell;
+                tb.Text = character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentText", "")) - 1].spell.Name;
+                Spell spell = character.Talents[0].Build[0].spell;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -203,7 +206,7 @@ namespace WoWHandbook.views
                 String sourceString = "http://media.blizzard.com/wow/icons/56/";
                 try
                 {
-                    sourceString += character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].Spell.Icon + ".jpg";
+                    sourceString += character.Talents[0].Build[Int32.Parse(tb.Name.Replace("talentImage", "")) - 1].spell.Icon + ".jpg";
                     tb.Source = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
                 }
                 catch (ArgumentOutOfRangeException)
@@ -265,31 +268,31 @@ namespace WoWHandbook.views
 
             image.Source = new BitmapImage(new Uri(sourceSting + item.Icon + ".jpg", UriKind.Absolute));
             Border border = image.Parent as Border;
-            switch (item.Quality)
-            {
+            /* switch (item.Quality)
+             {
 
-                case ItemQuality.Common:
-                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.White);
-                    break;
-                case ItemQuality.Uncommon:
-                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Green);
-                    break;
-                case ItemQuality.Rare:
-                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
-                    break;
-                case ItemQuality.Epic:
-                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
-                    break;
-                case ItemQuality.Legendary:
-                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
-                    break;
-                case ItemQuality.Artifact:
-                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
-                    break;
-                case ItemQuality.Heirloom:
-                    border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
-                    break;
-            }
+                 case ItemQuality.Common:
+                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.White);
+                     break;
+                 case ItemQuality.Uncommon:
+                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Green);
+                     break;
+                 case ItemQuality.Rare:
+                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Blue);
+                     break;
+                 case ItemQuality.Epic:
+                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Purple);
+                     break;
+                 case ItemQuality.Legendary:
+                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
+                     break;
+                 case ItemQuality.Artifact:
+                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                     break;
+                 case ItemQuality.Heirloom:
+                     border.BorderBrush = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+                     break;
+             }*/
         }
 
         private void backButtonTapped(object sender, TappedRoutedEventArgs e)
@@ -316,7 +319,7 @@ namespace WoWHandbook.views
 
             itemInfoName.Text = equipedItem.Name;
             SolidColorBrush solidColorBrush;
-            switch (equipedItem.Quality)
+            /*switch (equipedItem.Quality)
             {
 
                 case ItemQuality.Common:
@@ -344,11 +347,11 @@ namespace WoWHandbook.views
                     solidColorBrush = new SolidColorBrush(Windows.UI.Colors.White);
                     break;
             }
-            itemInfoName.Foreground = solidColorBrush;
+            itemInfoName.Foreground = solidColorBrush;*/
             itemInfoItemLevel.Text = "Item Level " + equipedItem.ItemLevel;
             try
             {
-                itemInfoUpgradeLevel.Text = "Upgrade Level: " + equipedItem.Parameters.Upgrade.Current + "/" + equipedItem.Parameters.Upgrade.Total;
+                itemInfoUpgradeLevel.Text = "Upgrade Level: " + equipedItem.TooltipParams.Upgrade.Current + "/" + equipedItem.TooltipParams.Upgrade.Total;
                 itemInfoUpgradeLevel.Visibility = Visibility.Visible;
             }
             catch (NullReferenceException)
@@ -359,7 +362,7 @@ namespace WoWHandbook.views
             if (detailedItem != null)
             {
                 String bindType = null;
-                switch (detailedItem.BindType)
+                /*switch (detailedItem.BindType)
                 {
                     case ItemBindType.BindOnEquipped:
                         bindType = "Binds on Equip";
@@ -378,7 +381,7 @@ namespace WoWHandbook.views
                         break;
                     default:
                         break;
-                }
+                }*/
                 if (bindType == null)
                 {
                     itemInfoBinding.Visibility = Visibility.Collapsed;
@@ -390,19 +393,19 @@ namespace WoWHandbook.views
                 }
 
                 itemInfoDescription.Text = "";
-                foreach (ItemSpell spell in detailedItem.ItemSpells)
-                {
-                    itemInfoDescription.Text += spell.Spell.Description + "\n\n";
-                }
-                if (itemInfoDescription.Text == "")
-                {
-                    itemInfoDescription.Visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    itemInfoDescription.Text.Trim();
-                    itemInfoDescription.Visibility = Visibility.Visible;
-                }
+                /* foreach (ItemSpell spell in detailedItem.itemSpells)
+                 {
+                     itemInfoDescription.Text += spell.Spell.Description + "\n\n";
+                 }
+                 if (itemInfoDescription.Text == "")
+                 {
+                     itemInfoDescription.Visibility = Visibility.Collapsed;
+                 }
+                 else
+                 {
+                     itemInfoDescription.Text.Trim();
+                     itemInfoDescription.Visibility = Visibility.Visible;
+                 }*/
                 //itemInfoDescription.Text = detailedItem.ItemSpells.ElementAt(0).Spell.Description;
 
 
@@ -419,95 +422,96 @@ namespace WoWHandbook.views
 
 
 
-                if (detailedItem.ItemSet != null)
+                /* if (detailedItem.ItemSet != null)
+                 {
+                     itemInfoSetBonus.Visibility = Visibility.Visible;
+                     itemInfoSetBonus.Blocks.Clear();
+
+
+                     foreach (ItemSetBonus bonus in detailedItem.ItemSet.Bonuses)
+                     {
+                         int itemSetCount = 0;
+                         foreach (KeyValuePair<EquippedItem, Item> entry in itemDictionary)
+                         {
+                             if (entry.Value.ItemSet != null && entry.Value.ItemSet.Id == detailedItem.ItemSet.Id)
+                             {
+                                 itemSetCount++;
+                             }
+                         }
+
+
+                         Run bonusText = new Run();
+                         if (itemSetCount < bonus.Threshold)
+                         {
+                             bonusText.Foreground = new SolidColorBrush(Windows.UI.Colors.Gray);
+                         }
+                         bonusText.FontSize = 14;
+                         bonusText.Text = "Set (" + bonus.Threshold + "): " + bonus.Description + "\n";
+
+                         // Create a paragraph and add the Run and Bold to it.
+                         Paragraph myParagraph = new Paragraph();
+                         myParagraph.Inlines.Add(bonusText);
+                         itemInfoSetBonus.Blocks.Add(myParagraph);
+                     }
+                 }
+                 else
+                 {
+                     itemInfoSetBonus.Visibility = Visibility.Collapsed;
+                 }
+             }
+             else
+             {
+                 itemInfoSetBonus.Visibility = Visibility.Collapsed;
+                 itemInfoBinding.Visibility = Visibility.Collapsed;
+                 itemInfoDescription.Visibility = Visibility.Collapsed;
+             }// END IF ELSE detailedInfo != null
+                 */
+                StringBuilder stats = new StringBuilder();
+                /*ItemState? reforgedFrom = equipedItem.TooltipParams.Reforge;
+                ItemStatType? reforgedTo = equipedItem.TooltipParams.ReforgedFromStat;
+                for (int i = 0; i < equipedItem.Stats.Count; i++)
                 {
-                    itemInfoSetBonus.Visibility = Visibility.Visible;
-                    itemInfoSetBonus.Blocks.Clear();
-
-
-                    foreach (ItemSetBonus bonus in detailedItem.ItemSet.Bonuses)
+                    ItemStat stat = equipedItem.Stats.ElementAt(i);
+                    stats.Append("+" + stat.Amount + " " + stat.StatType.ToString().Replace("Rating", ""));
+                    if (reforgedTo != null && stat.StatType == reforgedTo)
                     {
-                        int itemSetCount = 0;
-                        foreach (KeyValuePair<EquippedItem, Item> entry in itemDictionary)
-                        {
-                            if (entry.Value.ItemSet != null && entry.Value.ItemSet.Id == detailedItem.ItemSet.Id)
-                            {
-                                itemSetCount++;
-                            }
-                        }
-
-
-                        Run bonusText = new Run();
-                        if (itemSetCount < bonus.Threshold)
-                        {
-                            bonusText.Foreground = new SolidColorBrush(Windows.UI.Colors.Gray);
-                        }
-                        bonusText.FontSize = 14;
-                        bonusText.Text = "Set (" + bonus.Threshold + "): " + bonus.Description + "\n";
-
-                        // Create a paragraph and add the Run and Bold to it.
-                        Paragraph myParagraph = new Paragraph();
-                        myParagraph.Inlines.Add(bonusText);
-                        itemInfoSetBonus.Blocks.Add(myParagraph);
+                        stats.Append(" (Reforged from " + reforgedFrom.Value.ToString().Replace("Rating", "") + ")");
                     }
+                    stats.Append("\n");
+                }
+                    */
+
+
+                itemInfoStats.Text = stats.ToString();
+                itemInfoFrame.Visibility = Visibility.Visible;
+                //itemInfoFrame.InvalidateMeasure();
+                itemInfoFrame.UpdateLayout();
+                var ttv = image.TransformToVisual(Window.Current.Content);
+                Point screenCoords = ttv.TransformPoint(new Point(0, 0));
+                Thickness margin = itemInfoFrame.Margin;
+                if (screenCoords.Y + itemInfoFrame.RenderSize.Height + 15 >= Window.Current.Bounds.Height)
+                {
+                    margin.Top = screenCoords.Y + image.RenderSize.Height - itemInfoFrame.RenderSize.Height;
+
                 }
                 else
                 {
-                    itemInfoSetBonus.Visibility = Visibility.Collapsed;
-                }
-            }
-            else
-            {
-                itemInfoSetBonus.Visibility = Visibility.Collapsed;
-                itemInfoBinding.Visibility = Visibility.Collapsed;
-                itemInfoDescription.Visibility = Visibility.Collapsed;
-            }// END IF ELSE detailedInfo != null
 
-            StringBuilder stats = new StringBuilder();
-            ItemStatType? reforgedFrom = equipedItem.Parameters.ReforgedToStat;
-            ItemStatType? reforgedTo = equipedItem.Parameters.ReforgedFromStat;
-            for (int i = 0; i < equipedItem.Stats.Count; i++)
-            {
-                ItemStat stat = equipedItem.Stats.ElementAt(i);
-                stats.Append("+" + stat.Amount + " " + stat.StatType.ToString().Replace("Rating", ""));
-                if (reforgedTo != null && stat.StatType == reforgedTo)
+                    margin.Top = screenCoords.Y;
+                }
+
+                if (screenCoords.X + itemInfoFrame.ActualWidth >= characterItemsSection.RenderSize.Width)
                 {
-                    stats.Append(" (Reforged from " + reforgedFrom.Value.ToString().Replace("Rating", "") + ")");
+                    margin.Left = screenCoords.X - itemInfoFrame.ActualWidth - 20;
                 }
-                stats.Append("\n");
+                else
+                {
+                    margin.Left = screenCoords.X + image.ActualWidth + 20;
+                }
+
+
+                itemInfoFrame.Margin = margin;
             }
-
-
-
-            itemInfoStats.Text = stats.ToString();
-            itemInfoFrame.Visibility = Visibility.Visible;
-            //itemInfoFrame.InvalidateMeasure();
-            itemInfoFrame.UpdateLayout();
-            var ttv = image.TransformToVisual(Window.Current.Content);
-            Point screenCoords = ttv.TransformPoint(new Point(0, 0));
-            Thickness margin = itemInfoFrame.Margin;
-            if (screenCoords.Y + itemInfoFrame.RenderSize.Height + 15 >= Window.Current.Bounds.Height)
-            {
-                margin.Top = screenCoords.Y + image.RenderSize.Height - itemInfoFrame.RenderSize.Height;
-
-            }
-            else
-            {
-
-                margin.Top = screenCoords.Y;
-            }
-
-            if (screenCoords.X + itemInfoFrame.ActualWidth >= characterItemsSection.RenderSize.Width)
-            {
-                margin.Left = screenCoords.X - itemInfoFrame.ActualWidth - 20;
-            }
-            else
-            {
-                margin.Left = screenCoords.X + image.ActualWidth + 20;
-            }
-
-
-            itemInfoFrame.Margin = margin;
         }
 
         private void EquipmentPointerExited(object sender, PointerRoutedEventArgs e)

@@ -14,8 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WoWHandbook.backend;
 using WoWHandbook.views;
-using WOWSharp.Community;
-using WOWSharp.Community.Wow;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,10 +34,10 @@ namespace WoWHandbook
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //responseTextBlock.Text = WoWLookup.getInstance().getLevel(nameField.Text, "Area52").ToString();
-           // WowClient client = new WowClient(Region.EU);
-            String[] args = { nameField.Text, realmField.Text }; 
-            this.Frame.Navigate(typeof(CharacterPage), args); 
-               
+            // WowClient client = new WowClient(Region.EU);
+            String[] args = { nameField.Text, realmField.Text };
+            this.Frame.Navigate(typeof(CharacterPage), args);
+
         }
         private void NameField_KeyDown(object sender, KeyRoutedEventArgs e)
         {
@@ -46,7 +45,7 @@ namespace WoWHandbook
 
         private void RealmField_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if ( e.Key == Windows.System.VirtualKey.Enter )
+            if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 String[] args = { nameField.Text, realmField.Text };
                 this.Frame.Navigate(typeof(CharacterPage), args);

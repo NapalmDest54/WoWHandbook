@@ -1,21 +1,22 @@
-﻿using System;
+﻿using BlizzAPI;
+using BlizzAPI.WoW;
+using BlizzAPI.WoW.character;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WOWSharp.Community;
-using WOWSharp.Community.Wow;
 
 namespace WoWHandbook.backend
 {
     public class WoWLookup
     {
         private static WoWLookup instance = null;
-        private static WowClient client = null;
+        private static WoWClient client = null;
 
         private WoWLookup()
         {
-            client = new WowClient(Region.US);
+            client = new WoWClient(new Region(BlizzAPI.Region.Regions.US));
         }
 
         public static WoWLookup getInstance()
@@ -31,7 +32,7 @@ namespace WoWHandbook.backend
 
         public Character getCharacter(String characterName, String server)
         {
-            return client.GetCharacterAsync(server, characterName, CharacterFields.All).Result;
+            return client.getCharacter(server, characterName).Result;
         }
     }
 }
