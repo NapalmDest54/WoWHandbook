@@ -34,7 +34,7 @@ namespace WoWHandbook.Views.Character
         private BlizzAPI.WoW.character.Character character;
         private WoWClient wowClient;
         private Dictionary<String, String> statDictionary;
-
+        private Dictionary<String, String> equippedImageURLS;
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -161,6 +161,29 @@ namespace WoWHandbook.Views.Character
                 {"rangedHitValue", "+" + character.Stats.RangedHitPercent.ToString("0.00") + "%"},
                 {"rangedCritValue", character.Stats.RangedCrit.ToString("0.00") + "%"}
             };
+
+            String baseIconURL = "http://us.media.blizzard.com/wow/icons/56/";
+            equippedImageURLS = new Dictionary<string, string>()
+            {
+                {"imageHead", character.EquippedItems.Head != null ? baseIconURL + character.EquippedItems.Head.Icon + ".jpg" : null},
+                {"imageNeck", character.EquippedItems.Neck != null ? baseIconURL + character.EquippedItems.Neck.Icon + ".jpg" : null},
+                {"imageShoulder", character.EquippedItems.Shoulder != null ? baseIconURL + character.EquippedItems.Shoulder.Icon + ".jpg" : null},
+                {"imageBack", character.EquippedItems.Back != null ? baseIconURL + character.EquippedItems.Back.Icon + ".jpg" : null},
+                {"imageChest", character.EquippedItems.Chest != null ? baseIconURL + character.EquippedItems.Chest.Icon + ".jpg" : null},
+               // {"imageShirt", character.EquippedItems.Head != null ? baseIconURL + character.EquippedItems.Shirt.Icon + ".jpg" : null},
+               // {"imageTabard", character.EquippedItems.Head != null ? baseIconURL + character.EquippedItems.Tabard.Icon + ".jpg" : null},
+                {"imageWrist", character.EquippedItems.Wrist != null ? baseIconURL + character.EquippedItems.Wrist.Icon + ".jpg" : null},
+                {"imageHands", character.EquippedItems.Hands != null ? baseIconURL + character.EquippedItems.Hands.Icon + ".jpg" : null},
+                {"imageWaist", character.EquippedItems.Waist != null ? baseIconURL + character.EquippedItems.Waist.Icon + ".jpg" : null},
+                {"imageLegs", character.EquippedItems.Legs != null ? baseIconURL + character.EquippedItems.Legs.Icon + ".jpg" : null},
+                {"imageFeet", character.EquippedItems.Feet != null ? baseIconURL + character.EquippedItems.Feet.Icon + ".jpg" : null},
+                {"imageRing1", character.EquippedItems.Finger1 != null ? baseIconURL + character.EquippedItems.Finger1.Icon + ".jpg" : null},
+                {"imageRing2", character.EquippedItems.Finger2 != null ? baseIconURL + character.EquippedItems.Finger2.Icon + ".jpg" : null},
+                {"imageTrinket1", character.EquippedItems.Trinket1 != null ? baseIconURL + character.EquippedItems.Trinket1.Icon + ".jpg" : null},
+                {"imageTrinket2", character.EquippedItems.Trinket2 != null ? baseIconURL + character.EquippedItems.Trinket2.Icon + ".jpg" : null},
+                {"imageMainHand", character.EquippedItems.MainHand != null ? baseIconURL + character.EquippedItems.MainHand.Icon + ".jpg" : null},
+                {"imageOffHand", character.EquippedItems.OffHand != null ? baseIconURL + character.EquippedItems.OffHand.Icon + ".jpg" : null},
+            };
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -191,6 +214,20 @@ namespace WoWHandbook.Views.Character
         {
             HubSection hubSection = sender as HubSection;
             hubSection.MinWidth = Math.Max(700, Window.Current.Bounds.Width / 2f);
+        }
+
+        private void equippedItemLoaded(object sender, RoutedEventArgs e)
+        {
+            Image itemImage = sender as Image;
+            if (itemImage == null)
+                return;
+
+            String imageURL = "";
+            equippedImageURLS.TryGetValue(itemImage.Name, out imageURL);
+            if (imageURL != null)
+            {
+                itemImage.Source = new BitmapImage(new Uri(imageURL, UriKind.Absolute));
+            }
         }
     }
 }
