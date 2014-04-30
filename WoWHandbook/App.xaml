@@ -1,9 +1,9 @@
 ﻿<Application
-    x:Class="App1.App"
+    x:Class="WoWHandbook.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:App1"
-    xmlns:localData="using:App1.Data">
+    xmlns:local="using:WoWHandbook"
+    xmlns:localData="using:WoWHandbook.Data">
 
     <Application.Resources>
         <!-- Application-specific resources -->

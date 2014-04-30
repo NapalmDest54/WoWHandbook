@@ -1,12 +1,12 @@
 ﻿<Page
     x:Name="pageRoot"
-    x:Class="App1.ItemPage"
+    x:Class="WoWHandbook.Views.Character.ItemPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:App1"
-    xmlns:data="using:App1.Data"
-    xmlns:common="using:App1.Common"
+    xmlns:local="using:WoWHandbook"
+    xmlns:data="using:WoWHandbook.Data"
+    xmlns:common="using:WoWHandbook.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">

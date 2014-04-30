@@ -1,4 +1,4 @@
-﻿using App1.Common;
+﻿using WoWHandbook.Common;
 
 using System;
 using System.Collections.Generic;
@@ -16,10 +16,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WoWHandbook.Views.Character;
 
 // The Hub App template is documented at http://go.microsoft.com/fwlink/?LinkId=321221
 
-namespace App1
+namespace WoWHandbook
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -88,7 +89,7 @@ namespace App1
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(HubPage), e.Arguments);
+                rootFrame.Navigate(typeof(WoWHandbook.Views.BlankPage1), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

@@ -1,5 +1,5 @@
-﻿using App1.Common;
-using App1.Data;
+﻿using WoWHandbook.Common;
+using WoWHandbook.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,10 +14,15 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using BlizzAPI.WoW;
+using BlizzAPI.WoW.character;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=321224
 
-namespace App1
+namespace WoWHandbook.Views.Character
 {
     /// <summary>
     /// A page that displays a grouped collection of items.
@@ -26,6 +31,8 @@ namespace App1
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private BlizzAPI.WoW.character.Character character;
+        private WoWClient wowClient;
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -107,7 +114,15 @@ namespace App1
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            wowClient = new WoWClient(new BlizzAPI.Region(BlizzAPI.Region.Regions.US));
+            var myList = e.Parameter as List<string>;
+            var task = Task.Run(async () => { this.character = await wowClient.getCharacter(myList.ElementAt(1), myList.ElementAt(0), CharacterFields.Fields.Items); });
+
             navigationHelper.OnNavigatedTo(e);
+            task.Wait();
+            //while (!task.IsCompleted) { Debug.WriteLine(character == null); }
+            pageTitle.Text = character.Name + " - " + character.Realm;
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -116,5 +131,11 @@ namespace App1
         }
 
         #endregion
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
+            String sourceString = "http://us.battle.net/static-render/us/" + character.Thumbnail.Replace("-avatar.jpg", "") + "-profilemain.jpg";
+            (equippedItems.Background as ImageBrush).ImageSource = new BitmapImage(new Uri(sourceString, UriKind.Absolute));
+        }
     }
 }
