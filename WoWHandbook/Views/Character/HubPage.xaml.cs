@@ -40,6 +40,9 @@ namespace WoWHandbook.Views.Character
         private Dictionary<String, String> equippedImageURLS;
         private Dictionary<String, EquippedItem> equippedItemsDictionary;
         private Dictionary<ItemQuality, Color> itemQualityColor;
+        private Dictionary<String, Item> detailedItems;
+        private Popup itemDetailPopup;
+        private MyUserControl1 itemDetailPopupContent;
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
         /// process lifetime management
@@ -211,6 +214,8 @@ namespace WoWHandbook.Views.Character
                 {"OFFHAND", character.EquippedItems.OffHand}
             };
 
+            getDetailedItems();
+
             itemQualityColor = new Dictionary<ItemQuality, Color>()
             {
                 {ItemQuality.POOR, Colors.Gray},
@@ -223,7 +228,22 @@ namespace WoWHandbook.Views.Character
                 {ItemQuality.HEIRLOOM, Colors.Gold}
 
             };
+            itemDetailPopupContent = new MyUserControl1();
+            itemDetailPopup = new Popup();
+            itemDetailPopup.Child = itemDetailPopupContent;
+        }
 
+        private async void getDetailedItems()
+        {
+            detailedItems = new Dictionary<string, Item>();
+            foreach (String key in equippedItemsDictionary.Keys)
+            {
+                EquippedItem equippedItem = null;
+                equippedItemsDictionary.TryGetValue(key, out equippedItem);
+                if (equippedItem == null)
+                    continue;
+                detailedItems.Add(key, await wowClient.getItem(equippedItem.ID));
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -261,7 +281,6 @@ namespace WoWHandbook.Views.Character
             Image itemImage = sender as Image;
             if (itemImage == null)
                 return;
-
             String imageURL = "";
             equippedImageURLS.TryGetValue(itemImage.Name, out imageURL);
             if (imageURL != null)
@@ -275,6 +294,7 @@ namespace WoWHandbook.Views.Character
             Border border = sender as Border;
             if (border != null)
             {
+
                 EquippedItem item = null;
                 equippedItemsDictionary.TryGetValue(border.Name.Replace("border", "").ToUpper(), out item);
                 if (item != null)
@@ -288,6 +308,25 @@ namespace WoWHandbook.Views.Character
                     Debug.WriteLine("item null " + border.Name.Replace("border", ""));
                 }
             }
+        }
+
+        private void pointerEnteredImage(object sender, PointerRoutedEventArgs e)
+        {
+            var image = sender as Image;
+            Item item = null;
+            detailedItems.TryGetValue(image.Name.Replace("image", "").ToUpper(), out item);
+            EquippedItem equippedItem = null;
+            equippedItemsDictionary.TryGetValue(image.Name.Replace("image", "").ToUpper(), out equippedItem);
+            if (item != null)
+                itemDetailPopupContent.loadFromItem(item, equippedItem);
+            itemDetailPopup.HorizontalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).X + image.RenderSize.Width + 20;
+            itemDetailPopup.VerticalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).Y;
+            itemDetailPopup.IsOpen = true;
+        }
+
+        private void pointerExitedImage(object sender, PointerRoutedEventArgs e)
+        {
+            itemDetailPopup.IsOpen = false;
         }
     }
 }
