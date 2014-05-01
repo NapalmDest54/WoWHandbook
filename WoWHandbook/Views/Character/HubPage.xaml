@@ -50,25 +50,88 @@
             		<ColumnDefinition/>
             		<ColumnDefinition/>
             	</Grid.ColumnDefinitions>
-            	<Image x:Name="imageOffand" Grid.Column="2" Margin="0" Grid.Row="8" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-secondaryhand.jpg" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageMainHand" Margin="0" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-mainhand.jpg" Grid.Column="1" Grid.Row="8" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageTrinket2" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-trinket.jpg" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageTrinket1" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-trinket.jpg" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageRing2" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-finger.jpg" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageRing1" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-finger.jpg" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageFeet" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-feet.jpg" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageLegs" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-legs.jpg" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageWaist" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-waist.jpg" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageHands" Margin="0,3,10,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-hands.jpg" Grid.Column="3" HorizontalAlignment="Right" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageHead" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-head.jpg" HorizontalAlignment="Left"
-                    Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageNeck" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-neck.jpg" HorizontalAlignment="Left" Grid.Row="1" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageShoulder" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-shoulder.jpg" HorizontalAlignment="Left" Grid.Row="2" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageBack" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-back.jpg" HorizontalAlignment="Left" Grid.Row="3" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageChest" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-chest.jpg" HorizontalAlignment="Left" Grid.Row="4" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageShirt" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-shirt.jpg" HorizontalAlignment="Left" Grid.Row="5" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageTabard" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-tabard.jpg" HorizontalAlignment="Left" Grid.Row="6" Loaded="equippedItemLoaded" />
-            	<Image x:Name="imageWrist" Margin="10,3,0,3" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-wrists.jpg" HorizontalAlignment="Left" Grid.Row="7" ToolTipService.ToolTip="" Loaded="equippedItemLoaded" />
+            	<Border x:Name="borderOffHand" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="8" Grid.Column="2" CornerRadius="2" Loaded="equippedItemBorderLoaded">
+            		<Image x:Name="imageOffand" Margin="0" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-secondaryhand.jpg" Loaded="equippedItemLoaded" />
+            	</Border>
+                <Border
+                    x:Name="borderMainHand"
+                    Margin="0"
+                    Grid.Column="1"
+                    Grid.Row="8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    BorderThickness="4"
+                    CornerRadius="2"
+                    BorderBrush="Black"
+                    Loaded="equippedItemBorderLoaded">
+            		<Image x:Name="imageMainHand" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-mainhand.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderTrinket2" Margin="0,3,10,3" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageTrinket2" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-trinket.jpg" Loaded="equippedItemLoaded" />
+            	</Border>
+            	<Border x:Name="borderTrinket1" Margin="0,3,10,3" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageTrinket1" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-trinket.jpg" Loaded="equippedItemLoaded"
+                        Margin="0" />
+            	</Border>
+            	<Border x:Name="borderRing2" Margin="0,3,10,3" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageRing2" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-finger.jpg" Loaded="equippedItemLoaded" />
+            	</Border>
+            	<Border x:Name="borderRing1" Margin="0,3,10,3" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageRing1" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-finger.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+                <Border
+                    x:Name="borderFeet"
+                    Margin="0,3,10,3"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    HorizontalAlignment="Right"
+                    BorderThickness="4"
+                    CornerRadius="2"
+                    BorderBrush="Black"
+                    Loaded="equippedItemBorderLoaded">
+            		<Image x:Name="imageFeet" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-feet.jpg" Loaded="equippedItemLoaded" />
+            	</Border>
+            	<Border x:Name="borderLegs" Margin="0,3,10,3" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageLegs" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-legs.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderWaist" Margin="0,3,10,3" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageWaist" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-waist.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderHands" Margin="0,3,10,3" Grid.Column="3" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageHands" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-hands.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+                <Border
+                    x:Name="borderHead"
+                    Margin="10,3,0,3"
+                    HorizontalAlignment="Left"
+                    BorderBrush="Black"
+                    BorderThickness="4"
+                    CornerRadius="2"
+                    Loaded="equippedItemBorderLoaded">
+            		<Image x:Name="imageHead" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-head.jpg"
+            			Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderNeck" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="1" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageNeck" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-neck.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderShoulder" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="2" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageShoulder" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-shoulder.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderBack" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="3" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageBack" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-back.jpg" Loaded="equippedItemLoaded" />
+            	</Border>
+            	<Border x:Name="borderChest" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="4" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageChest" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-chest.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderShirt" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="5" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageShirt" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-shirt.jpg" Loaded="equippedItemLoaded" />
+            	</Border>
+            	<Border x:Name="borderTabard" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="6" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageTabard" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-tabard.jpg" Loaded="equippedItemLoaded" Margin="0" />
+            	</Border>
+            	<Border x:Name="borderWrist" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="7" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
+            		<Image x:Name="imageWrist" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-wrists.jpg" ToolTipService.ToolTip="" Loaded="equippedItemLoaded" />
+            	</Border>
             </Grid>
         </DataTemplate>
     </Page.Resources>

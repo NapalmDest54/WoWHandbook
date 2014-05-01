@@ -19,6 +19,9 @@ using BlizzAPI.WoW.character;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Windows.UI.Xaml.Media.Imaging;
+using BlizzAPI.WoW.character.items;
+using Windows.UI;
+using BlizzAPI.WoW.Items;
 
 // The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=321224
 
@@ -35,7 +38,8 @@ namespace WoWHandbook.Views.Character
         private WoWClient wowClient;
         private Dictionary<String, String> statDictionary;
         private Dictionary<String, String> equippedImageURLS;
-
+        private Dictionary<String, EquippedItem> equippedItemsDictionary;
+        private Dictionary<ItemQuality, Color> itemQualityColor;
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
         /// process lifetime management
@@ -184,6 +188,42 @@ namespace WoWHandbook.Views.Character
                 {"imageMainHand", character.EquippedItems.MainHand != null ? baseIconURL + character.EquippedItems.MainHand.Icon + ".jpg" : null},
                 {"imageOffHand", character.EquippedItems.OffHand != null ? baseIconURL + character.EquippedItems.OffHand.Icon + ".jpg" : null},
             };
+
+            equippedItemsDictionary = new Dictionary<string, EquippedItem>()
+            {
+                {"HEAD", character.EquippedItems.Head},
+                {"NECK", character.EquippedItems.Neck},
+                {"SHOULDER", character.EquippedItems.Shoulder},
+                {"BACK", character.EquippedItems.Back},
+                {"CHEST", character.EquippedItems.Chest},
+                {"SHIRT", character.EquippedItems.Shirt},
+                {"TABARD", character.EquippedItems.Tabard},
+                {"WRIST", character.EquippedItems.Wrist},
+                {"HANDS", character.EquippedItems.Hands},
+                {"WAIST", character.EquippedItems.Waist},
+                {"LEGS", character.EquippedItems.Legs},
+                {"FEET", character.EquippedItems.Feet},
+                {"RING1", character.EquippedItems.Finger1},
+                {"RING2", character.EquippedItems.Finger2},
+                {"TRINKET1", character.EquippedItems.Trinket1},
+                {"TRINKET2", character.EquippedItems.Trinket2},
+                {"MAINHAND", character.EquippedItems.MainHand},
+                {"OFFHAND", character.EquippedItems.OffHand}
+            };
+
+            itemQualityColor = new Dictionary<ItemQuality, Color>()
+            {
+                {ItemQuality.POOR, Colors.Gray},
+                {ItemQuality.COMMON, Colors.White},
+                {ItemQuality.UNCOMMON, Colors.Green},
+                {ItemQuality.RARE, Colors.Blue},
+                {ItemQuality.EPIC, Colors.Purple},
+                {ItemQuality.LEGENDARY, Colors.Orange},
+                {ItemQuality.ARTIFACT, Colors.Gold},
+                {ItemQuality.HEIRLOOM, Colors.Gold}
+
+            };
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -227,6 +267,26 @@ namespace WoWHandbook.Views.Character
             if (imageURL != null)
             {
                 itemImage.Source = new BitmapImage(new Uri(imageURL, UriKind.Absolute));
+            }
+        }
+
+        private void equippedItemBorderLoaded(object sender, RoutedEventArgs e)
+        {
+            Border border = sender as Border;
+            if (border != null)
+            {
+                EquippedItem item = null;
+                equippedItemsDictionary.TryGetValue(border.Name.Replace("border", "").ToUpper(), out item);
+                if (item != null)
+                {
+                    Color color = Colors.Black;
+                    itemQualityColor.TryGetValue(item.Quality, out color);
+                    border.BorderBrush = new SolidColorBrush(color);
+                }
+                else
+                {
+                    Debug.WriteLine("item null " + border.Name.Replace("border", ""));
+                }
             }
         }
     }
