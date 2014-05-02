@@ -321,8 +321,19 @@ namespace WoWHandbook.Views.Character
                 itemDetailPopupContent.loadFromItem(item, equippedItem);
             else
                 return;
+            itemDetailPopupContent.UpdateLayout();
+            itemDetailPopupContent.InvalidateMeasure();
+            itemDetailPopupContent.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            double heightOfPopup = itemDetailPopupContent.DesiredSize.Height;
+            double widthOfPopup = itemDetailPopupContent.RenderSize.Width;
+            double verticalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).Y;
+            if (heightOfPopup + verticalOffset > Window.Current.Content.RenderSize.Height)
+            {
+                verticalOffset -= heightOfPopup - image.RenderSize.Height;
+            }
+
             itemDetailPopup.HorizontalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).X + image.RenderSize.Width + 20;
-            itemDetailPopup.VerticalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).Y;
+            itemDetailPopup.VerticalOffset = verticalOffset;
             itemDetailPopup.IsOpen = true;
         }
 
