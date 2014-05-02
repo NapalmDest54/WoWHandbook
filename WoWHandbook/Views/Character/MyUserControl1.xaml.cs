@@ -35,19 +35,19 @@ namespace WoWHandbook.Views.Character
             Color color = Colors.White;
             ColorLookup.colorLookup.TryGetValue(equippedItem.Quality, out color);
 
-            itemInfoName.Text = item.name;
+            itemInfoName.Text = item.Name;
             itemInfoName.Foreground = new SolidColorBrush(color);
 
-            itemInfoItemLevel.Text = "Item Level " + ((equippedItem == null) ? item.itemLevel.ToString() : equippedItem.ItemLevel.ToString());
-            itemInfoUpgradeLevel.Text = (equippedItem == null) ? item.upgradable ? "Upgradeable" : "Not-Upgradeable" : "Upgrade Level: " + equippedItem.TooltipParams.Upgrade.Current + "/" + equippedItem.TooltipParams.Upgrade.Total;
+            itemInfoItemLevel.Text = "Item Level " + ((equippedItem == null) ? item.ItemLevel.ToString() : equippedItem.ItemLevel.ToString());
+            itemInfoUpgradeLevel.Text = (equippedItem == null) ? item.Upgradable ? "Upgradeable" : "Not-Upgradeable" : "Upgrade Level: " + equippedItem.TooltipParams.Upgrade.Current + "/" + equippedItem.TooltipParams.Upgrade.Total;
 
-            itemInfoBinding.Text = "Binding " + item.itemBind.ToString();
+            itemInfoBinding.Text = "Binding " + item.ItemBind.ToString();
 
             itemInfoSlot.Text = "Slot " + "NEED TO ADD";
 
-            itemInfoArmor.Text = item.armor.ToString() + " Armor";
+            itemInfoArmor.Text = item.Armor.ToString() + " Armor";
 
-            itemInfoDescription.Text = item.description;
+            itemInfoDescription.Text = item.Description;
 
             StringBuilder stats = new StringBuilder();
             var reforgedFrom = equippedItem.TooltipParams.Reforge;
@@ -55,13 +55,13 @@ namespace WoWHandbook.Views.Character
             foreach (ItemStat stat in statsItem)
             {
                 stats.Append("+");
+                stats.Append(stat.Amount.ToString());
+                stats.Append(" ");
                 stats.Append(stat.StatType.ToString().Replace("Rating", ""));
                 if (stat.StatType == (BlizzAPI.WoW.Items.ItemStats.ItemStatType)reforgedFrom)
                 {
                     //equippedItem.TooltipParams.
                 }
-                stats.Append(" ");
-                stats.Append(stat.Amount.ToString());
                 stats.AppendLine();
             }
             Debug.WriteLine(reforgedFrom.ToString());

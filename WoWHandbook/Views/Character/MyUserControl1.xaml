@@ -20,7 +20,8 @@
             <TextBlock
                 x:Name="itemInfoName"
                 FontSize="22"
-                TextWrapping="Wrap">
+                TextWrapping="Wrap"
+                Foreground="#FFBF00FF">
                 <Run
                     Text="Name of Item" />
             </TextBlock>

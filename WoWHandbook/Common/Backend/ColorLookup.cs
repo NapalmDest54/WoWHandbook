@@ -16,7 +16,7 @@ namespace WoWHandbook.Common.Backend
                 {ItemQuality.COMMON, Colors.White},
                 {ItemQuality.UNCOMMON, Colors.Green},
                 {ItemQuality.RARE, Colors.Blue},
-                {ItemQuality.EPIC, Colors.Purple},
+                {ItemQuality.EPIC, ColorHelper.FromArgb(255, 205, 0, 255)},
                 {ItemQuality.LEGENDARY, Colors.Orange},
                 {ItemQuality.ARTIFACT, Colors.Gold},
                 {ItemQuality.HEIRLOOM, Colors.Gold}
