@@ -39,7 +39,7 @@ namespace WoWHandbook.Views.Character
             itemInfoName.Foreground = new SolidColorBrush(color);
 
             itemInfoItemLevel.Text = "Item Level " + ((equippedItem == null) ? item.ItemLevel.ToString() : equippedItem.ItemLevel.ToString());
-            itemInfoUpgradeLevel.Text = (equippedItem == null) ? item.Upgradable ? "Upgradeable" : "Not-Upgradeable" : "Upgrade Level: " + equippedItem.TooltipParams.Upgrade.Current + "/" + equippedItem.TooltipParams.Upgrade.Total;
+            itemInfoUpgradeLevel.Text = (item.Upgradable) ? (equippedItem == null) ? "Upgrade Level 0/2" : "Upgrade Level " + equippedItem.TooltipParams.Upgrade.Current + "/" + equippedItem.TooltipParams.Upgrade.Total : "Not Upgradable";
 
             itemInfoBinding.Text = "Binding " + item.ItemBind.ToString();
 
@@ -51,16 +51,19 @@ namespace WoWHandbook.Views.Character
 
             StringBuilder stats = new StringBuilder();
             var reforgedFrom = equippedItem.TooltipParams.Reforge;
-            var statsItem = equippedItem.Stats;
+            var statsItem = equippedItem.Stats.OrderBy(x => x.StatType).ToList();
+
             foreach (ItemStat stat in statsItem)
             {
                 stats.Append("+");
                 stats.Append(stat.Amount.ToString());
                 stats.Append(" ");
                 stats.Append(stat.StatType.ToString().Replace("Rating", ""));
-                if (stat.StatType == (BlizzAPI.WoW.Items.ItemStats.ItemStatType)reforgedFrom)
+                if (stat.StatType == equippedItem.TooltipParams.ReforgedToStat)
                 {
-                    //equippedItem.TooltipParams.
+                    stats.Append("(Reforged from ");
+                    stats.Append(equippedItem.TooltipParams.ReforgedFromStat.ToString());
+                    stats.Append(")");
                 }
                 stats.AppendLine();
             }
