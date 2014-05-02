@@ -319,6 +319,8 @@ namespace WoWHandbook.Views.Character
             equippedItemsDictionary.TryGetValue(image.Name.Replace("image", "").ToUpper(), out equippedItem);
             if (item != null)
                 itemDetailPopupContent.loadFromItem(item, equippedItem);
+            else
+                return;
             itemDetailPopup.HorizontalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).X + image.RenderSize.Width + 20;
             itemDetailPopup.VerticalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).Y;
             itemDetailPopup.IsOpen = true;
