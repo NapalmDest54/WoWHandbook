@@ -61,7 +61,7 @@ namespace WoWHandbook.Views.Character
                 stats.Append(stat.StatType.ToString().Replace("Rating", ""));
                 if (stat.StatType == equippedItem.TooltipParams.ReforgedToStat)
                 {
-                    stats.Append("(Reforged from ");
+                    stats.Append(" (Reforged from ");
                     stats.Append(equippedItem.TooltipParams.ReforgedFromStat.ToString());
                     stats.Append(")");
                 }
@@ -71,5 +71,7 @@ namespace WoWHandbook.Views.Character
             itemInfoStats.Text = stats.ToString();
 
         }
+
+
     }
 }
