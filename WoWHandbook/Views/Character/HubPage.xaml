@@ -126,7 +126,7 @@
                         PointerExited="pointerExitedImage" />
                 </Border>
             	<Border x:Name="borderChest" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="4" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
-            		<Image x:Name="imageChest" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-chest.jpg" Loaded="equippedItemLoaded"  PointerEntered="pointerEnteredImage" PointerExited="pointerExitedImage" Margin="0" />
+            		<Image x:Name="imageChest" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-chest.jpg" Loaded="equippedItemLoaded"  PointerEntered="pointerEnteredImage" PointerExited="pointerExitedImage" Margin="0" DragEnter="dragEnteredImage" DragLeave="dragExitedImage" />
             	</Border>
             	<Border x:Name="borderShirt" Margin="10,3,0,3" HorizontalAlignment="Left" Grid.Row="5" BorderBrush="Black" BorderThickness="4" CornerRadius="2" Loaded="equippedItemBorderLoaded" >
             		<Image x:Name="imageShirt" Source="ms-appx:///Assets/gear/emptySlots/empty-slot-shirt.jpg" Loaded="equippedItemLoaded"  PointerEntered="pointerEnteredImage" PointerExited="pointerExitedImage" />

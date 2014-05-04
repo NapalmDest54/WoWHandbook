@@ -312,34 +312,55 @@ namespace WoWHandbook.Views.Character
 
         private void pointerEnteredImage(object sender, PointerRoutedEventArgs e)
         {
-            var image = sender as Image;
-            Item item = null;
-            detailedItems.TryGetValue(image.Name.Replace("image", "").ToUpper(), out item);
-            EquippedItem equippedItem = null;
-            equippedItemsDictionary.TryGetValue(image.Name.Replace("image", "").ToUpper(), out equippedItem);
-            if (item != null)
-                itemDetailPopupContent.loadFromItem(item, equippedItem);
-            else
-                return;
-            itemDetailPopupContent.UpdateLayout();
-            itemDetailPopupContent.InvalidateMeasure();
-            itemDetailPopupContent.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            double heightOfPopup = itemDetailPopupContent.DesiredSize.Height;
-            double widthOfPopup = itemDetailPopupContent.RenderSize.Width;
-            double verticalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).Y;
-            if (heightOfPopup + verticalOffset > Window.Current.Content.RenderSize.Height)
-            {
-                verticalOffset -= heightOfPopup - image.RenderSize.Height;
-            }
+           openPopup(sender);
+        }
 
-            itemDetailPopup.HorizontalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).X + image.RenderSize.Width + 20;
-            itemDetailPopup.VerticalOffset = verticalOffset;
-            itemDetailPopup.IsOpen = true;
+        private void openPopup(object sender)
+        {
+                    var image = sender as Image;
+                    Item item = null;
+                    detailedItems.TryGetValue(image.Name.Replace("image", "").ToUpper(), out item);
+                    EquippedItem equippedItem = null;
+                    equippedItemsDictionary.TryGetValue(image.Name.Replace("image", "").ToUpper(), out equippedItem);
+                    if (item != null)
+                        itemDetailPopupContent.loadFromItem(item, equippedItem);
+                    else
+                        return;
+                    itemDetailPopupContent.UpdateLayout();
+                    itemDetailPopupContent.InvalidateMeasure();
+                    itemDetailPopupContent.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                    double heightOfPopup = itemDetailPopupContent.DesiredSize.Height;
+                    double widthOfPopup = itemDetailPopupContent.RenderSize.Width;
+                    double verticalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).Y;
+                    if (heightOfPopup + verticalOffset > Window.Current.Content.RenderSize.Height)
+                    {
+                        verticalOffset -= heightOfPopup - image.RenderSize.Height;
+                    }
+
+                    itemDetailPopup.HorizontalOffset = image.TransformToVisual(Window.Current.Content).TransformPoint(new Point(0, 0)).X + image.RenderSize.Width + 20;
+                    itemDetailPopup.VerticalOffset = verticalOffset;
+                    itemDetailPopup.IsOpen = true;
         }
 
         private void pointerExitedImage(object sender, PointerRoutedEventArgs e)
         {
+            closePopup();
+        }
+
+        private void closePopup()
+        {
             itemDetailPopup.IsOpen = false;
         }
+
+        private void dragEnteredImage(object sender, DragEventArgs e)
+        {
+            openPopup(sender);
+        }
+
+        private void dragExitedImage(object sender, DragEventArgs e)
+        {
+            closePopup();
+        }
+
     }
 }
